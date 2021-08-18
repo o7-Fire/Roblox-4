@@ -7,6 +7,7 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local uis = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local isVideoPlaying = true
+local isSpamBlacklist = false
 
 function colourthisblock(block, r, g, b)
     spawn(function()
@@ -221,6 +222,30 @@ end)
 
 local Tab3 = Window:Tab("Non-PVP", "http://www.roblox.com/asset/?id=6023426915")
 Tab3:Label("Does not require you to be in a PVP servers")
+Tab3:Button("Spam Blacklist Others", "blacklists and unblacklist other people causing them to get sent back to base", function()
+    if isSpamBlacklist then
+        isSpamBlacklist = false
+    else
+        isSpamBlacklist = true
+    end
+    pcall(function()
+        while wait() do
+            if isSpamBlacklist then
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        local args = {[1] = v.Name, [2] = "BlackList", [3] = true}
+                        game:GetService("ReplicatedStorage").Remotes.ListHandler:FireServer(unpack(args))
+                        wait()
+                        local args = {[1] = v.Name, [2] = "BlackList", [3] = false}
+                        game:GetService("ReplicatedStorage").Remotes.ListHandler:FireServer(unpack(args))
+                    end
+                end
+            else
+                b.b.b.b() -- scuffed break
+            end
+        end
+    end)
+end)
 Tab3:Button("Blackhole out of your blocks", "makes a black hole at your position out of your creation's blocks, better effect with 1x1 blocks", function()
     local LocalPlayer = game:GetService("Players").LocalPlayer
     local charcframe = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
