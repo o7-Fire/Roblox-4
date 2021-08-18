@@ -55,6 +55,9 @@ end)
 Tab1:Button("Infinite Yield", "loads in infinite yield", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
+Tab1:Button("Mirror mode", "mirrors your placement", function()
+    
+end)
 Tab1:Button("Enable building grid", "makes a platform so you dont have to build scaffolding to place blocks", function()
     for i,zone in pairs(game.Workspace.BuildingZones:GetChildren()) do
         if tostring(zone.Owner.Value) == game.Players.LocalPlayer.Name then
@@ -119,6 +122,38 @@ Tab2:Button("Kill Guns", "kill players using guns", function()
         end
     end)
 end)
+
+Tab2:Button("Kill Rockets", "kill players using rockets. close tracking for better effect", function()
+    pcall(function()
+        while wait() do
+            local guns = {}
+            for i,v in pairs(game:GetService("Workspace")[game.Players.LocalPlayer.Name .. "Aircraft"]:GetChildren()) do
+                if v.Name == "Rocket" then
+                    table.insert(guns, v)
+                    zeroGrav(v.MainPart)
+                end
+            end
+            for i,v in pairs(game.Players:GetChildren()) do
+                local a = 1
+                if v.Name == game.Players.LocalPlayer.Name then
+                    a = 0
+                end
+                if a == 1 then
+                    pcall(function()
+                        guns[i].MainPart.CFrame = v.Character.HumanoidRootPart.CFrame + v.Character.HumanoidRootPart.CFrame.lookVector * 100
+                        local args = {
+                            [1] = guns[i],
+                            [2] = 1629193720
+                            
+                        }
+                        game:GetService("ReplicatedStorage").Remotes.spawnrocket:FireServer(unpack(args))
+                    end)
+                end
+            end
+        end
+    end)
+end)
+
 Tab2:Button("Kill TNT", "kill players using tnt", function()
     local bomb = {}
     local Players = game:GetService("Players")
@@ -186,6 +221,36 @@ end)
 
 local Tab3 = Window:Tab("Non-PVP", "http://www.roblox.com/asset/?id=6023426915")
 Tab3:Label("Does not require you to be in a PVP servers")
+Tab3:Button("Blackhole out of your blocks", "makes a black hole at your position out of your creation's blocks, better effect with 1x1 blocks", function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local charcframe = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
+    local unanchoredparts = {}
+    local movers = {}
+    for index, part in pairs(workspace:GetDescendants()) do
+        if part:IsA("Part") and part.Anchored == false and part:IsDescendantOf(LocalPlayer.Character) == false then
+            table.insert(unanchoredparts, part)
+            part.Massless = true
+            part.CanCollide = false
+            if part:FindFirstChildOfClass("BodyPosition") ~= nil then
+                part:FindFirstChildOfClass("BodyPosition"):Destroy()
+            end
+        end
+    end
+    for index, part in pairs(unanchoredparts) do
+        local mover = Instance.new("BodyPosition", part)
+        table.insert(movers, mover)
+        mover.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+    end
+    repeat
+        for index, mover in pairs(movers) do
+            mover.Position = charcframe:PointToWorldSpace(Vector3.new(math.random(0, 200), math.random(0, 200), math.random(0, 200)))
+        end
+        wait(0.5)
+    until LocalPlayer.Character:FindFirstChild("Humanoid").Health <= 0
+    for _, mover in pairs(movers) do
+        mover:Destroy()
+    end
+end)
 Tab3:Button("Lag server", "lags the server you are in to the point where it crashes", function()
     for i=1, 20 do
        pcall(function()
@@ -202,6 +267,129 @@ Tab3:Button("Disable Anti Copy Blacklist", "it will disable the blacklist and ma
             v.Transparency = 0
         end)
     end
+end)
+Tab3:Button("Infinite Terrain Generation", "infinite terrain generation client sided, does not work well on low-end pc", function()
+    --Chunk generator by rater193
+    --just edited by nexity
+    --TODO: make trees, bushes and custom villages (able to bomb the village pog warcrimes)
+    
+    --The chunk generator settings
+    local settings = {
+    	chunkSize = 256,
+    	renderDistance = 4
+    }
+    --Chunk generation
+    --This stores the list of chunks queued to generate terrain
+    chunksToGenerate = {}
+    
+    --This handles queuing new chunks to generate
+    function queueChunk(x, y)
+    	table.insert(chunksToGenerate, {["x"] = x, ["y"] = y})
+    end
+    
+    --Here we are tapping into the runservice stepped event to process queued chunks to generate
+    game:GetService("RunService").Stepped:connect(function()
+    	--Only run if we have chunks to generate
+    	if(#chunksToGenerate>0) then
+    		--Here we are retreiving the first item in the list
+    		local item = chunksToGenerate[1]
+    		
+    		--Then we remove it from the list, and process it
+    		table.remove(chunksToGenerate, 1)
+    		
+    		--Here we are setting the chunk's part to render green, to show that we have generated the chunk(for debugging)
+    		chunks[getChunkID(item.x, item.y)].part.BrickColor = BrickColor.new(Color3.fromRGB(0,255,0))
+    		
+    		--Here are some additional reused values for generating the terrain
+    		local chunkgeneratorsettings = {
+    			["xstart"] = item.x*settings.chunkSize,
+    			["ystart"] = item.y*settings.chunkSize,
+    			["width"] = math.ceil(settings.chunkSize/4),
+    			["height"] = math.ceil(settings.chunkSize/4)
+    		}
+    		
+    		--Here we are generating the terrain
+    		for _x = 0,chunkgeneratorsettings.width do
+    			for _y = 0,chunkgeneratorsettings.height do
+    				
+    				--Actual terrain generation logic
+    				local _height = (math.noise(((_x*4)+chunkgeneratorsettings.xstart)/1000,((_y*4)+chunkgeneratorsettings.ystart)/1000)+0.5) * 150
+    				local _material = Enum.Material.Air
+    
+    				-- imagine yanderedev
+    				-- snowy hills biome
+    				if(_height<1) then
+    					_height = 1
+    					_material = Enum.Material.Water
+    				elseif(_height<3) then
+    					_material = Enum.Material.Sand
+    				elseif (_height>math.random(100, 150)) then
+    					_material = Enum.Material.Snow
+    				else
+    					_material = Enum.Material.Grass
+    				end
+    
+    				game.workspace.Terrain:FillBlock(CFrame.new((_x*4)+chunkgeneratorsettings.xstart,_height/2,(_y*4)+chunkgeneratorsettings.ystart), Vector3.new(1,_height,1), _material)
+    			end
+    		end
+    	end
+    end)
+    
+    --Now we are going to start handling chunks loading in around the players
+    --Chunk management
+    --The list of generated chunks
+    chunks = {}
+    --This gets the id in the list for the chunk
+    function getChunkID(x, y)
+    	return tostring(x)..","..tostring(y)
+    end
+    
+    --This checks if we need to generate the chunk
+    function checkChunk(x, y)
+    	local chunkID = getChunkID(x, y)
+    	if(chunks[chunkID]==nil) then
+    		chunks[chunkID] = {}
+    		
+    		--Here we are generating a preview part, to let us know what chunks we are trying to generate(for debugging)
+    		local part = Instance.new("Part")
+    		part.Anchored = true
+    		part.CanCollide = true
+    		part.BrickColor = BrickColor.new(Color3.fromRGB(255,0,0))
+    		part.Transparency = 0.5
+    		part.Material = Enum.Material.Grass
+    		part.Size = Vector3.new(settings.chunkSize, 1, settings.chunkSize)
+    		part.Position = Vector3.new(settings.chunkSize * x, 0, settings.chunkSize * y) + Vector3.new(settings.chunkSize/2,0,settings.chunkSize/2)
+    		
+    		part.Parent = game.Workspace
+    		
+    		part.Name = "Chunk-"..tostring(x).."."..tostring(y)
+    		
+    		--Adding the preview part to the chunk data
+    		chunks[chunkID].part = part
+    		
+    		--Finally, queue the chunk for terrain generation
+    		queueChunk(x,y)
+    	end
+    end
+    
+    --Here we are tapping into the run service stepped event to handle chunks around the players
+    game:GetService("RunService").Stepped:connect(function()
+    	for i, player in pairs(game.Players:GetPlayers()) do
+    		if(player.character and player.character:findFirstChild("Head")) then
+    			local _pos = {
+    				["x"]= math.floor((player.character.Head.Position.X)/settings.chunkSize),
+    				["y"]= math.floor((player.character.Head.Position.Z)/settings.chunkSize)
+    			}
+    			
+    
+    			for _x = _pos.x-settings.renderDistance, _pos.x+settings.renderDistance do
+    				for _y = _pos.y-settings.renderDistance, _pos.y+settings.renderDistance do
+    					checkChunk(_x, _y)
+    				end
+    			end
+    		end
+    	end
+    end)
 end)
 Tab3:Textbox("Change thruster speed", "changes all movement speed by %, default 100%", true, function(text)
     for i,v in pairs(game.Workspace[game.Players.LocalPlayer.Name .. "Aircraft"]:GetDescendants()) do
@@ -595,7 +783,7 @@ Tab5:Label("Play videos on 24x24 1x1 block canvas.")
 Tab5:Button("Stop playing video", "stops the video from playing", function()
     pcall(function()
         isVideoPlaying = false
-        wait(0.1)
+        wait(1)
         isVideoPlaying = true
     end)
 end)
