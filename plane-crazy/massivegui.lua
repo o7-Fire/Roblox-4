@@ -8,6 +8,7 @@ local uis = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 local isVideoPlaying = true
 local isSpamBlacklist = false
+local isRandomPaint = false
 
 function colourthisblock(block, r, g, b)
     spawn(function()
@@ -50,6 +51,26 @@ end
 
 local Tab1 = Window:Tab("Building", "http://www.roblox.com/asset/?id=6023426915")
 Tab1:Label("stuff to help you build")
+Tab1:Button("Paint Aircraft Random Colour", "paints your aircraft random colours every 0.5 seconds", function()
+    if isRandomPaint then
+        isRandomPaint = false
+    else
+        isRandomPaint = true
+    end
+    while wait(0.5) do
+        if isRandomPaint then
+            local args = {
+                [1] = workspace.PlayerAircraft[game.Players.LocalPlayer.Name].BlockStd.BlockStd,
+                [2] = Color3.new(math.random(0, 255) / 255, math.random(0, 255) / 255, math.random(0, 255) / 255),
+                [3] = "a"
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.Paint:FireServer(unpack(args))
+        else
+            break
+        end
+    end
+end)
 Tab1:Button("Gravity gun", "gives a gravity gun that can move only your creation", function()
     loadstring(game:HttpGet(('https://pastebin.com/raw/6cfa5Wxa'),true))()
 end)
