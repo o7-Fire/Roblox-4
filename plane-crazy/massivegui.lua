@@ -34,7 +34,7 @@ local function zeroGrav(part)
 end
 
 function round(n)
-    return (n + 0.5) - (n + 0.5) % 1
+    return (n + 0.5) - (n + 0.1) % 1
 end
 
 function parachute()
@@ -853,7 +853,7 @@ Tab5:Textbox("Video in workspace folder", "plays the video on a 24x24 canvas in 
                 if framecount > 2 and framecount % (skipframe + 1) == 0 then
                     ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
                     if ping > 500 then
-                        wait(0.5)
+                        wait(0.69)
                     end -- ping bias
     
                     print(framecount)
@@ -925,7 +925,7 @@ Tab5:Textbox("Video inputstream", "testing currently not for use", true, functio
                 local skipframe = 0
                 if framecount > 2 and framecount % (skipframe + 1) == 0 then
                     ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
-                    if ping > 500 then
+                    if ping > 690 then
                         wait(ping + ping)
                     end -- ping bias
                     print(framecount)
@@ -942,7 +942,7 @@ Tab5:Textbox("Video inputstream", "testing currently not for use", true, functio
                                 local rgb1 = tonumber(rgb[1])
                                 local rgb2 = tonumber(rgb[2])
                                 local theblock = game.Workspace.PlayerAircraft[tostring(game.Players.LocalPlayer)]["BlockStd" .. rgb1 .. "x" .. rgb2].PrimaryPart
-                                local increment = 48 -- 1-255, 1 = absolute value, higher = more noise but less lag
+                                local increment = 69 -- 1-255, 1 = absolute value, higher = more noise but less lag
                                 local lastrgbc = Color3.new(math.floor(lastrgb[3] / increment), math.floor(lastrgb[4] / increment), math.floor(lastrgb[5] / increment))
                                 local rgbc = Color3.new(math.floor(rgb[3] / increment), math.floor(rgb[4] / increment), math.floor(rgb[5] / increment))
                                 if lastrgbc ~= rgbc then
@@ -954,7 +954,7 @@ Tab5:Textbox("Video inputstream", "testing currently not for use", true, functio
                     else
                         b.b.b.b()
                     end
-                    wait(0.033)
+                    wait(0.069)
                 end
             end
         end
