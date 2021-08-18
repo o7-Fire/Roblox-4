@@ -235,9 +235,10 @@ Tab3:Button("Spam Blacklist Others", "blacklists and unblacklist other people ca
                     if v.Name ~= game.Players.LocalPlayer.Name then
                         local args = {[1] = v.Name, [2] = "BlackList", [3] = true}
                         game:GetService("ReplicatedStorage").Remotes.ListHandler:FireServer(unpack(args))
-                        wait()
+                        wait(0.2)
                         local args = {[1] = v.Name, [2] = "BlackList", [3] = false}
                         game:GetService("ReplicatedStorage").Remotes.ListHandler:FireServer(unpack(args))
+                        wait(0.2)
                     end
                 end
             else
@@ -246,6 +247,7 @@ Tab3:Button("Spam Blacklist Others", "blacklists and unblacklist other people ca
         end
     end)
 end)
+
 Tab3:Button("Blackhole out of your blocks", "makes a black hole at your position out of your creation's blocks, better effect with 1x1 blocks", function()
     local LocalPlayer = game:GetService("Players").LocalPlayer
     local charcframe = LocalPlayer.Character:FindFirstChild("HumanoidRootPart").CFrame
