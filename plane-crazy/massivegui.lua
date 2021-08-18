@@ -9,6 +9,7 @@ local RunService = game:GetService("RunService")
 local isVideoPlaying = true
 local isSpamBlacklist = false
 local isRandomPaint = false
+local isGridEnabled = false
 
 function colourthisblock(block, r, g, b)
     spawn(function()
@@ -80,26 +81,30 @@ end)
 Tab1:Button("Mirror mode", "mirrors your placement", function()
     
 end)
-Tab1:Button("Enable building grid", "makes a platform so you dont have to build scaffolding to place blocks", function()
-    for i,zone in pairs(game.Workspace.BuildingZones:GetChildren()) do
-        if tostring(zone.Owner.Value) == game.Players.LocalPlayer.Name then
-            local wall = Instance.new("Part")
-            wall.Size = Vector3.new(130, 2.5, 130)
-            wall.Material = Enum.Material.SmoothPlastic
-            wall.Name = "GridWall"
-            wall.CanCollide = false
-            wall.Transparency = 0.7
-            wall.Anchored = true
-            wall.CFrame = CFrame.new(zone.Position.x, zone.Position.y + 3.5, zone.Position.z)
-            wall.Parent = game.Workspace.PlayerAircraft[game.Players.LocalPlayer.Name]
+Tab1:Button("Building Grid", "makes a platform so you dont have to build scaffolding to place blocks", function()
+    if isGridEnabled then
+        isGridEnabled = false
+        pcall(function()
+            game.Workspace.PlayerAircraft[game.Players.LocalPlayer.Name].GridWall:Destroy()
+        end)
+    else
+        isGridEnabled = true
+        for i,zone in pairs(game.Workspace.BuildingZones:GetChildren()) do
+            if tostring(zone.Owner.Value) == game.Players.LocalPlayer.Name then
+                local wall = Instance.new("Part")
+                wall.Size = Vector3.new(130, 2.5, 130)
+                wall.Material = Enum.Material.SmoothPlastic
+                wall.Name = "GridWall"
+                wall.CanCollide = false
+                wall.Transparency = 0.7
+                wall.Anchored = true
+                wall.CFrame = CFrame.new(zone.Position.x, zone.Position.y + 3.5, zone.Position.z)
+                wall.Parent = game.Workspace.PlayerAircraft[game.Players.LocalPlayer.Name]
+            end
         end
     end
 end)
-Tab1:Button("Disable building grid", "makes a platform so you dont have to build scaffolding to place blocks", function()
-    pcall(function()
-        game.Workspace.PlayerAircraft[game.Players.LocalPlayer.Name].GridWall:Destroy()
-    end)
-end)
+
 Tab1:Button("Rise building grid", "moves the building grid up", function()
     pcall(function()
         wall = game.Workspace.PlayerAircraft[game.Players.LocalPlayer.Name].GridWall
