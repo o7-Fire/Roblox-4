@@ -9,8 +9,26 @@ local RunService = game:GetService("RunService")
 local isVideoPlaying = true
 local isSpamBlacklist = false
 local isRandomPaint = false
+local isRandomMaterial = false
 local isGridEnabled = false
 
+local materials = {
+    "Default",
+    "g",
+    "c",
+    "w",
+    "e",
+    "m",
+    "t",
+    "v",
+    "d",
+    "f",
+    "s",
+    "n",
+    "z",
+    "i",
+    "x"
+}
 function colourthisblock(block, r, g, b)
     spawn(function()
         local A_1 = block
@@ -52,6 +70,25 @@ end
 
 local Tab1 = Window:Tab("Building", "http://www.roblox.com/asset/?id=6023426915")
 Tab1:Label("stuff to help you build")
+Tab1:Button("Paint Aircraft Random Material", "paints your aircraft random materials every 0.5 seconds", function()
+    if isRandomMaterial then
+        isRandomMaterial = false
+    else
+        isRandomMaterial = true
+    end
+    while wait(0.2) do
+        if isRandomMaterial then
+            local args = {
+                [1] = workspace.PlayerAircraft[game.Players.LocalPlayer.Name].BlockStd.BlockStd,
+                [2] = materials[math.random(1, #materials)],
+                [3] = "a"
+            }
+            game:GetService("ReplicatedStorage").Remotes.Paint:FireServer(unpack(args))
+        else
+            break
+        end
+    end
+end)
 Tab1:Button("Paint Aircraft Random Colour", "paints your aircraft random colours every 0.5 seconds", function()
     if isRandomPaint then
         isRandomPaint = false
