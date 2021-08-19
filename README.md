@@ -10,6 +10,10 @@ youtube link to pixel art paint\
 \
 vibing\
 ![](https://i.gyazo.com/9338e9fb6a4085972c838adac376b49e.gif)\
-![](https://i.gyazo.com/ce899109f072653ae49400723c48e94a.gif)\
-![](https://i.gyazo.com/ce899109f072653ae49400723c48e94a.gif)\
+![](https://i.gyazo.com/a7177398dca0ba95be3f51343bf01ea4.gif)\
+![](https://i.gyazo.com/9e4e7fe00a35bfd368ffae1351e8a9c7.gif)\
+![](https://i.gyazo.com/737cbcfce432bc6f5e5d04643a9080b1.gif)\
+![](https://i.gyazo.com/9c8289d7d5c1ae1ccfca1d294358c06c.gif)\
+![](https://i.gyazo.com/a83217b578434d80eb6f1a82d15d908a.gif)\
+![](https://i.gyazo.com/fbb21f1f172908067146f230c8f86208.gif)\
 
