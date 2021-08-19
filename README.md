@@ -11,7 +11,8 @@ youtube link to pixel art paint\
 \
 \
 \
-vibe
+vibe\
 ![](https://i.gyazo.com/9338e9fb6a4085972c838adac376b49e.gif)
+![](https://i.gyazo.com/a7177398dca0ba95be3f51343bf01ea4.gif)
 ![](https://cdn.discordapp.com/attachments/855238594843508756/875010075478065242/image0.png)
 
