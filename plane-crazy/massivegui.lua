@@ -58,7 +58,7 @@ Tab1:Button("Paint Aircraft Random Colour", "paints your aircraft random colours
     else
         isRandomPaint = true
     end
-    while wait(0.5) do
+    while wait(0.2) do
         if isRandomPaint then
             local args = {
                 [1] = workspace.PlayerAircraft[game.Players.LocalPlayer.Name].BlockStd.BlockStd,
