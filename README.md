@@ -12,6 +12,6 @@ youtube link to pixel art paint\
 \
 \
 vibe
-![](https://gyazo.com/9338e9fb6a4085972c838adac376b49e)
+![](https://i.gyazo.com/9338e9fb6a4085972c838adac376b49e.mp4)
 ![](https://cdn.discordapp.com/attachments/855238594843508756/875010075478065242/image0.png)
 
