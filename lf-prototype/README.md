@@ -1,6 +1,11 @@
 # tutorial
 you know youre doing something wrong when other people dont know how to use it\
 \
+if you want to render yourself, you have to have python 3\
+pip3 install opencv-python\
+pip3 install moviepy\
+pip3 install Pillow\
+\
 here rendering your own video\
 1. variables are main.py, input.mp4, and frames.txt
 2. you have input.mp4, which is the video you choose to play
@@ -9,6 +14,8 @@ here rendering your own video\
 5. it will strart playing the video
 \
 here prerendered video if you dont feel like rendering your own video\
+put these in /workspace/frames/ in your executor folder\
+\
 https://cdn.discordapp.com/attachments/871597817632792607/874286226608377866/hax.txt
 https://cdn.discordapp.com/attachments/871597817632792607/874286276004691968/mario1.txt
 https://cdn.discordapp.com/attachments/871597817632792607/874286293000003714/rickroll2.txt
