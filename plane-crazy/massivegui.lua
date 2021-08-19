@@ -115,9 +115,11 @@ end)
 Tab1:Button("Infinite Yield", "loads in infinite yield", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
+--[[
 Tab1:Button("Mirror mode", "mirrors your placement", function()
     
 end)
+]]
 Tab1:Button("Building Grid", "makes a platform so you dont have to build scaffolding to place blocks", function()
     if isGridEnabled then
         isGridEnabled = false
