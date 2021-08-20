@@ -57,14 +57,15 @@ function colourchar(x, y, character)
         paintline(x+2, y, x+2, y+3, 1, 1, 1)
         paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
         paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
+        return 4
     elseif character == "b" then
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
-        paintline(x, y, x, y, 1, 1, 1)
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+1, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+3, 1, 1, 1)
+        return 4
     elseif character == "c" then
         
     elseif character == "d" then
@@ -142,10 +143,15 @@ for assad2,playerzone in pairs(game.Workspace.BuildingZones:GetChildren()) do
             end
         end
         
-        local currentx = 0
-        for i=1, 20 do
-            colourchar(currentx, 34, "a")
-            currentx = currentx + 4
+        local wordtodisplay = "baabaabaabaabaabaabaa"
+        local currentx = 1
+        local currenty = 34
+        for i=1, #wordtodisplay do
+            if currentx > 45 then
+                currenty = currenty - 6
+                currentx = 1
+            end
+            currentx = currentx + colourchar(currentx, currenty, wordtodisplay:sub(i, i))
         end
     end
 end
