@@ -67,17 +67,38 @@ function colourchar(x, y, character)
         paintline(x+2, y+3, x+2, y+3, 1, 1, 1)
         return 4
     elseif character == "c" then
-        
+        paintline(x, y+1, x, y+3, 1, 1, 1)
+        paintline(x+1, y, x+2, y, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "d" then
-        
+        paintline(x, y, x+1, y, 1, 1, 1)
+        paintline(x, y+1, x, y+3, 1, 1, 1)
+        paintline(x, y+4, x+1, y+4, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+3, 1, 1, 1)
+        return 4
     elseif character == "e" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+2, y, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "f" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        return 4
     elseif character == "g" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y, x+2, y, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+2, 1, 1, 1)
+        return 4
     elseif character == "h" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+2, y, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        return 4
     elseif character == "i" then
         
     elseif character == "j" then
@@ -143,7 +164,7 @@ for assad2,playerzone in pairs(game.Workspace.BuildingZones:GetChildren()) do
             end
         end
         
-        local wordtodisplay = "baabaabaabaabaabaabaa"
+        local wordtodisplay = "hahaahhaahhahhaahahahahahhhaahhhahhahaha"
         local currentx = 1
         local currenty = 34
         for i=1, #wordtodisplay do
