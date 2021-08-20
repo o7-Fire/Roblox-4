@@ -1,5 +1,7 @@
--- https://github.com/o7-Fire/Roblox-2/blob/main/lf-prototype/README.md
+-- https://github.com/o7-Fire/Roblox-4/blob/main/lf-prototype/README.md
 -- ^^ to render your own videos / download videos
+-- some features may be confusing, theres some video about it here
+-- https://www.youtube.com/channel/UCZ1V2zcSt5Ejmg29baFGt9Q/videos
 
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local Window = Flux:Window("PC Tools", "Press N to open/close", Color3.fromRGB(255, 110, 48), Enum.KeyCode.N)
