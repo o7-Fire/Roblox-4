@@ -1,4 +1,4 @@
--- not mine
+-- not mine, all credits go to https://v3rmillion.net/member.php?action=profile&uid=482542
 -- https://v3rmillion.net/showthread.php?tid=1128635&pid=7979082
 
 wait(15)
