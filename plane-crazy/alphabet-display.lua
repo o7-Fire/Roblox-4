@@ -204,6 +204,13 @@ function colourchar(x, y, character)
         return 4
     elseif character == " " then
         return 2
+    elseif character == "." then
+        paintline(x, y, x, y, 1, 1, 1)
+        return 2
+    elseif character == "," then
+        paintline(x+1, y, x+1, y+1, 1, 1, 1)
+        paintline(x, y-1, x, y-1, 1, 1, 1)
+        return 3
     end
 end
 
@@ -233,12 +240,13 @@ for assad2,playerzone in pairs(game.Workspace.BuildingZones:GetChildren()) do
             end
         end
         
-        local wordtodisplay = "abcdefghijklmnopqrstuvwxyz"
+        local wordtodisplay = "abcdefghijklmnopqrstuvwxyz .,"
+        local wordtodisplay = string.lower(wordtodisplay)
         local currentx = 1
         local currenty = 34
         for i=1, #wordtodisplay do
             if currentx > 45 then
-                currenty = currenty - 6
+                currenty = currenty - 7
                 currentx = 1
             end
             currentx = currentx + colourchar(currentx, currenty, wordtodisplay:sub(i, i))
