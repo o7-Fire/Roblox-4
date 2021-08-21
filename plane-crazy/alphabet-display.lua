@@ -96,45 +96,114 @@ function colourchar(x, y, character)
         return 4
     elseif character == "h" then
         paintline(x, y, x, y+4, 1, 1, 1)
-        paintline(x+2, y, x+2, y+4, 1, 1, 1)
         paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+2, y, x+2, y+4, 1, 1, 1)
         return 4
     elseif character == "i" then
-        
+        paintline(x, y, x+2, y, 1, 1, 1)
+        paintline(x, y+4, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y+1, x+1, y+3, 1, 1, 1)
+        return 4
     elseif character == "j" then
-        
+        paintline(x, y, x+1, y, 1, 1, 1)
+        paintline(x+1, y+1, x+1, y+3, 1, 1, 1)
+        paintline(x, y+4, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "k" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+2, y, x+2, y+1, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "l" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+2, y, 1, 1, 1)
+        return 4
     elseif character == "m" then
-        
+        paintline(x, y+4, x+4, y+4, 1, 1, 1)
+        paintline(x, y, x, y+3, 1, 1, 1)
+        paintline(x+2, y, x+2, y+3, 1, 1, 1)
+        paintline(x+4, y, x+4, y+3, 1, 1, 1)
+        return 6
     elseif character == "n" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
+        paintline(x+2, y, x+2, y+3, 1, 1, 1)
+        return 4
     elseif character == "o" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+2, y, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y, 1, 1, 1)
+        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
+        return 4
     elseif character == "p" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+2, y+2, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+3, 1, 1, 1)
+        return 4
     elseif character == "q" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y, 1, 1, 1)
+        paintline(x+3, y, x+3, y, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+3, 1, 1, 1)
+        return 5
     elseif character == "r" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+3, 1, 1, 1)
+        paintline(x+2, y, x+2, y+1, 1, 1, 1)
+        return 4
     elseif character == "s" then
-        
+        paintline(x, y, x+2, y, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+2, 1, 1, 1)
+        paintline(x, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x, y+3, x, y+4, 1, 1, 1)
+        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "t" then
-        
+        paintline(x+1, y, x+1, y+3, 1, 1, 1)
+        paintline(x, y+4, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "u" then
-        
+        paintline(x, y, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y, 1, 1, 1)
+        paintline(x+2, y, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "v" then
-        
+        paintline(x, y+1, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "w" then
-        
+        paintline(x+1, y, x+3, y, 1, 1, 1)
+        paintline(x, y+1, x, y+4, 1, 1, 1)
+        paintline(x+2, y+1, x+2, y+4, 1, 1, 1)
+        paintline(x+4, y+1, x+4, y+4, 1, 1, 1)
+        return 6
     elseif character == "x" then
-        
+        paintline(x, y, x, y+1, 1, 1, 1)
+        paintline(x, y+3, x, y+4, 1, 1, 1)
+        paintline(x+2, y, x+2, y+1, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+4, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        return 4
     elseif character == "y" then
-        
+        paintline(x, y+3, x, y+4, 1, 1, 1)
+        paintline(x+1, y, x+1, y+2, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+4, 1, 1, 1)
+        return 4
     elseif character == "z" then
-        
+        paintline(x, y, x+2, y, 1, 1, 1)
+        paintline(x, y+1, x, y+1, 1, 1, 1)
+        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
+        paintline(x+2, y+3, x+2, y+3, 1, 1, 1)
+        paintline(x, y+4, x+2, y+4, 1, 1, 1)
+        return 4
+    elseif character == " " then
+        return 2
     end
 end
 
@@ -164,7 +233,7 @@ for assad2,playerzone in pairs(game.Workspace.BuildingZones:GetChildren()) do
             end
         end
         
-        local wordtodisplay = "hahaahhaahhahhaahahahahahhhaahhhahhahaha"
+        local wordtodisplay = "abcdefghijklmnopqrstuvwxyz"
         local currentx = 1
         local currenty = 34
         for i=1, #wordtodisplay do
