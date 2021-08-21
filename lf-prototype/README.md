@@ -11,8 +11,8 @@ here rendering your own video\
 2. you have input.mp4, which is the video you choose to play
 3. when you run main.py, it will create a frames.txt that you rename to something like videoname1.txt and put into your executor workspace
 4. you take the lf-prototype.lua and change line 40 local response = readfile("rickroll1.txt") change the .txt to the frames.txt name
-4. or if you are using the gui version, you simply type the name of the txt and press enter
-5. it will strart playing the video
+4. or if you are using the gui version, put the frames.txt into /workspace/frames/ instead of just /workspace and type the name of the txt and press enter
+5. it will start playing the video
 \
 here prerendered video if you dont feel like rendering your own video\
 put these in /workspace/frames/ in your executor folder\
