@@ -25,7 +25,7 @@ getgenv().Settings = {
     TypeTime = 4
 }
 
-local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-2/main/words.txt")
+local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/words.txt")
 local Words = {}
 
 for line in string.gmatch(Response,"[^\r\n]*") do
@@ -34,7 +34,7 @@ for line in string.gmatch(Response,"[^\r\n]*") do
     end
 end
 
-local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-2/main/longwords.txt")
+local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/longwords.txt")
 local LongWords = {}
 
 for line in string.gmatch(Response,"[^\r\n]*") do
