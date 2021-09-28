@@ -1,6 +1,3 @@
---something i made a long time ago
--- ill make a better version soon
-
 -- Gui to Lua
 -- Version: 3.2
 
@@ -125,7 +122,7 @@ end)
 while wait() do
     pos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
     orientation = game.Players.LocalPlayer.Character.HumanoidRootPart.Orientation
-    Orientation.Text = "Orientation: " .. tostring(orientation.x)
+    Orientation.Text = "Orientation: " .. tostring(orientation)
     Height.Text = "Height: " .. tostring(pos.y)
     assad = 0
     pcall(function()
@@ -136,32 +133,32 @@ while wait() do
         if orientation.x > 15 and pos.y < (maintain + 300) then
             Status.Text = "Status: Pitching down"
             keypress(0x51)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x51)
         elseif orientation.x < -15 then
             Status.Text = "Status: Pitching up"
             keypress(0x45)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x45)
         elseif pos.y < maintain and orientation.x < 8 then
             Status.Text = "Status: Pitching up"
             keypress(0x45)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x45)
         elseif pos.y > (maintain + 300) and orientation.x > -8 then
             Status.Text = "Status: Pitching down"
             keypress(0x51)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x51)
-        elseif orientation.x > 5 and pos.y > 2000 and pos.y < (maintain + 300) then
+        elseif orientation.x > 5 and pos.y > maintain and pos.y < (maintain + 300) then
             Status.Text = "Status: Pitching down"
             keypress(0x51)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x51)
-        elseif orientation.x < 1 and pos.y > 2000 and pos.y < (maintain + 300) then
+        elseif orientation.x < 1 and pos.y > maintain and pos.y < (maintain + 300) then
             Status.Text = "Status: Pitching up"
             keypress(0x45)
-            wait(0.01)
+            wait(0.03)
             keyrelease(0x45)
         else
             Status.Text = "Status: Stopped pitching"
