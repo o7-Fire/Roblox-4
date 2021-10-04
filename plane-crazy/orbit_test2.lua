@@ -1,8 +1,9 @@
+-- change the axis at line 24 for better effect
 local character = game.Players.LocalPlayer.Character
 local hrp = character:WaitForChild("HumanoidRootPart")
 
 local parts = {}
-_G.Enabled = fal
+_G.Enabled = true
 
 function RandomVariable(length)
 	local res = ""
@@ -20,7 +21,7 @@ for i, part in pairs(game.Workspace[game.Players.LocalPlayer.Name..'Aircraft']:G
     end
 end
 
-local axis = Vector3.new(0, 1, 1)
+local axis = Vector3.new(0, 1, 0)
 local speed = 50
 while wait() do
     if _G.Enabled and _G.DoCheck == DoCheck then
