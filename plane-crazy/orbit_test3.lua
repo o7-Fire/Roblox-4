@@ -1,4 +1,4 @@
-local character = game.Players.dalendd.Character
+local character = game.Players.LocalPlayer.Character
 local hrp = character:WaitForChild("HumanoidRootPart")
 
 local parts = {}
