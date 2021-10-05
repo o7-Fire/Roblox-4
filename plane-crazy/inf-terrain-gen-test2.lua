@@ -7,12 +7,12 @@ local Settings = {
 	['YSize'] = nil,
 	['XScale'] = 200,
 	['YScale'] = 200,
-	['Spacing'] = 20,
-	['Power'] = 12;
-	['Amplifier'] = 25,
+	['Spacing'] = 50,
+	['Power'] = 100;
+	['Amplifier'] = 2.5,
 	['Frequency'] = 0.6,
 	['Octaves'] = 10,
-	['ChunkSize'] = 5,
+	['ChunkSize'] = 10,
 	['ChunkCount'] = 10
 }
 
@@ -58,7 +58,6 @@ function GetNoise(t,seed,tog)
 	end
 	--[[
 	if tog == 0 then
-
 		
 		t['i'] +=1
 		local x = GetNoise(t,seed,1)
@@ -76,17 +75,16 @@ end
 -- CoverChunks
 
 local BiomeInfo = {}
-
 BiomeInfo['RockyMountains'] = {
 	['Below'] = 10000;
-	['Above'] = 0;
+	['Above'] = 150;
 	['Properties'] = {
 		['Color'] = Color3.new(0.5,0.5,0.5);
 		['Material'] = Enum.Material.Rock;
 	}
 }
 BiomeInfo['GrassLands'] = {
-	['Below'] = 0;
+	['Below'] = 150;
 	['Above'] = -10000 ;
 	['Properties'] = {
 		['Color'] = Color3.new(0,.4,0);
@@ -140,7 +138,15 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
 	w2.Size = Vector3.new(0, height, math.abs(ac:Dot(back)));
 	w2.CFrame = CFrame.fromMatrix((a + c)/2, -right, up, -back);
 	w2.Parent = parent;
-
+	
+	for biomename,biome in pairs(BiomeInfo) do
+	    if biome.Below > w1.Position.y and w1.Position.y > biome.Above then
+	        w1.Color = biome.Properties.Color
+	        w1.Material = biome.Properties.Material
+	        w2.Color = biome.Properties.Color
+	        w2.Material = biome.Properties.Material
+        end
+    end
 	local Model = Instance.new('Model')
 	if game.Workspace:FindFirstChild("TerrainSkin") then
 	    Model.Parent = game.Workspace.TerrainSkin
