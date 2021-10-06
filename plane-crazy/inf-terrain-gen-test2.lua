@@ -149,11 +149,26 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
         end
 	end
 	
-	-- trees
-	if math.random(1, 50) == 1 then
-        local lowpolytree = game:GetObjects("rbxassetid://1278695440")[1]
-        lowpolytree.Parent = parent
-        lowpolytree:MoveTo(w1.Position)
+	local generateStructureInfo = {}
+	generateStructureInfo["Trees"] = {
+	    ["Chance"] = {1, 20}, -- 1 out of 20 times will generate tree
+	    ["TheModels"] = {"3287226226", "5960635089", "1278695440"},
+	}
+	generateStructureInfo["Vietcong"] = {
+	    ["Chance"] = {1, 50},
+	    ["TheModels"] = {"99593113"},
+	}
+	
+	-- random structures
+	local modelsgenerated = {}
+	
+	for i,v in pairs(generateStructureInfo) do
+	    if math.random(v.Chance[1], v.Chance[2]) == 1 then
+	        local themodelgenerated = game:GetObjects("rbxassetid://" .. v.TheModels[math.random(1, #v.TheModels)])[1]
+            themodelgenerated.Parent = parent
+            themodelgenerated:MoveTo(w1.Position)
+            table.insert(modelsgenerated, themodelgenerated)
+        end
     end
 	local Model = Instance.new('Model')
 	if game.Workspace:FindFirstChild("TerrainSkin") then
@@ -166,6 +181,9 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
 	Model.Name = Store['a'].Name..'|'..Store['b'].Name..'|'..Store['c'].Name..'|'
 	w1.Parent = Model
 	w2.Parent = Model
+	for i, v in pairs(modelsgenerated) do
+	    v.Parent = Model
+    end
 	return w1, w2;
 end
 
