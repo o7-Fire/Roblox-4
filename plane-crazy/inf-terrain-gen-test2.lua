@@ -139,6 +139,7 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
 	w2.CFrame = CFrame.fromMatrix((a + c)/2, -right, up, -back);
 	w2.Parent = parent;
 	
+	-- biomes
 	for biomename,biome in pairs(BiomeInfo) do
 	    if biome.Below > w1.Position.y and w1.Position.y > biome.Above then
 	        w1.Color = biome.Properties.Color
@@ -146,6 +147,13 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
 	        w2.Color = biome.Properties.Color
 	        w2.Material = biome.Properties.Material
         end
+	end
+	
+	-- trees
+	if math.random(1, 50) == 1 then
+        local lowpolytree = game:GetObjects("rbxassetid://1278695440")[1]
+        lowpolytree.Parent = parent
+        lowpolytree:MoveTo(w1.Position)
     end
 	local Model = Instance.new('Model')
 	if game.Workspace:FindFirstChild("TerrainSkin") then
