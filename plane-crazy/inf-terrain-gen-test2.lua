@@ -1,6 +1,7 @@
 local GeneratedC={} -- Used for tracking which chunks are currently loaded (could be merged with generationtracking but doesnt matter)
 local GenerationTracking = {} -- used for tracking the parts in each chunk (for unloading) uses alot of memory but oh well
 local randomizer = math.random(1, 600)
+local seed = 4357345783458346361
 
 local Settings = {
 	['XSize'] = nil,
@@ -13,7 +14,7 @@ local Settings = {
 	['Frequency'] = 0.6,
 	['Octaves'] = 10,
 	['ChunkSize'] = 10,
-	['ChunkCount'] = 10
+	['ChunkCount'] = 7
 }
 
 local BiomeSettings = {
@@ -151,24 +152,36 @@ local function draw3dTriangle(a, b, c, parent, w1, w2)
 	
 	local generateStructureInfo = {}
 	generateStructureInfo["Trees"] = {
-	    ["Chance"] = {1, 20}, -- 1 out of 20 times will generate tree
+	    ["Chance"] = {1, 200},
 	    ["TheModels"] = {"3287226226", "5960635089", "1278695440"},
 	}
-	generateStructureInfo["Vietcong"] = {
-	    ["Chance"] = {1, 50},
-	    ["TheModels"] = {"99593113"},
+	generateStructureInfo["Bushes"] = {
+	    ["Chance"] = {1, 80},
+	    ["TheModels"] = {"5065709935", "5003870763", "190476937"},
 	}
+	--[[
+	generateStructureInfo["NPC"] = {
+	    ["Chance"] = {1, 500},
+	    ["TheModels"] = {"99593113"},
+	}]]
 	
 	-- random structures
 	local modelsgenerated = {}
-	
+	local didgenerated = false
 	for i,v in pairs(generateStructureInfo) do
-	    if math.random(v.Chance[1], v.Chance[2]) == 1 then
-	        local themodelgenerated = game:GetObjects("rbxassetid://" .. v.TheModels[math.random(1, #v.TheModels)])[1]
-            themodelgenerated.Parent = parent
-            themodelgenerated:MoveTo(w1.Position)
-            table.insert(modelsgenerated, themodelgenerated)
-        end
+	    if didgenerated == false then
+    	    if math.random(v.Chance[1], v.Chance[2]) == 1 then
+    	        didgenerated = true
+    	        local themodelgenerated = game:GetObjects("rbxassetid://" .. v.TheModels[math.random(1, #v.TheModels)])[1]
+                themodelgenerated.Parent = parent
+                if themodelgenerated.ClassName == "Model" then
+                    themodelgenerated:MoveTo(w1.Position + Vector3.new(math.random(-30, 30), 0, math.random(-30, 30)))
+                elseif themodelgenerated.ClassName == "Part" then
+                    themodelgenerated.Position = w1.Position + Vector3.new(math.random(-30, 30), 0, math.random(-30, 30))
+                end
+                table.insert(modelsgenerated, themodelgenerated)
+            end
+    	end
     end
 	local Model = Instance.new('Model')
 	if game.Workspace:FindFirstChild("TerrainSkin") then
@@ -315,7 +328,6 @@ local function MakeChunk(Posx,Posz,seed) -- this will cause parts inbetween chun
 end
 
 local starttick = tick()
-local seed = 1324543
 local function IsEven(num)
 	return num % 2 == 0
 end
