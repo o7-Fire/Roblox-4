@@ -9,6 +9,7 @@ mirror mode\
 auto build areas using chosen block and chosen orientation\
 optimized infinite terrain generation with trees, villages, and bushes\
 \
+\
 vibing\
 ![](https://i.gyazo.com/9338e9fb6a4085972c838adac376b49e.gif)\
 ![](https://i.gyazo.com/a7177398dca0ba95be3f51343bf01ea4.gif)\
