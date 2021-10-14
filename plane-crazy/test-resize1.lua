@@ -11,6 +11,9 @@ local function zeroGrav(part)
     bodyForce.Parent = part
 end
 
+local tweenService = game:GetService("TweenService")
+local info = TweenInfo.new()
+
 function RandomVariable(length)
 	local res = ""
 	for i = 1, length do
@@ -39,6 +42,7 @@ for i,v in pairs(build:GetChildren()) do
 	    end]]
     else
         pcall(function()
+        	v.PrimaryPart.Anchored = false
             v.PrimaryPart.CanCollide = false
             zeroGrav(v.PrimaryPart)
         end)
@@ -51,23 +55,30 @@ while wait() do
         for i,v in pairs(game.Workspace[plr.Name]:GetChildren()) do 
             if v.ClassName == "MeshPart" then
                 local block = blocks[count]
-                --[[if block.PrimaryPart:FindFirstChild("BodyPosition") then
+                if block.PrimaryPart:FindFirstChild("BodyPosition") then
                     local BP = block.PrimaryPart.BodyPosition
-                    BP.Position = v.Position + Vector3.new(10, 0, 0) + v.CFrame.LookVector * 10
+                    local bodyGyro = block.PrimaryPart.BodyGyro
+                    BP.Position = v.Position --+ v.CFrame.LookVector * 10
+                    bodyGyro.CFrame = v.CFrame
                 else
                     block.PrimaryPart.CanCollide = false
+                    local bodyGyro = Instance.new("BodyGyro", block.PrimaryPart)
+                    bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+					bodyGyro.D = 100
                 	local BP = Instance.new("BodyPosition", block.PrimaryPart)
-                	BP.MaxForce = Vector3.new(2e9,2e9,2e9)
-                	BP.P = 100
-                	BP.D = 100
-                	BP.Position = v.Position + Vector3.new(10, 0, 0) + v.CFrame.LookVector * 10
-        	    end]]
-        	    block.PrimaryPart.CFrame = v.CFrame
+                	BP.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+                	BP.P = 25000
+                	BP.D = 1000
+                	BP.Position = v.Position --+ v.CFrame.LookVector * 10
+                	bodyGyro.CFrame = v.CFrame
+        	    end
+        	    --block.PrimaryPart.CFrame = v.CFrame
                 count += 1
             end
         end
         RunService.Heartbeat:Wait()
     else
+    	print("ended")
         break
     end
 end
