@@ -48,32 +48,89 @@ for i,v in pairs(build:GetChildren()) do
         end)
     end
 end
+
+local hrpb = {}
+for i,v in pairs(game.Workspace[plr.Name]:GetChildren()) do
+	if v.ClassName == "MeshPart" then
+		table.insert(hrpb, v)
+	end
+end
+
 wait(0.1)
 while wait() do
     if _G.DoCheck346784576 == DoCheck then
-        local count = 1
-        for i,v in pairs(game.Workspace[plr.Name]:GetChildren()) do 
-            if v.ClassName == "MeshPart" then
-                local block = blocks[count]
-                if block.PrimaryPart:FindFirstChild("BodyPosition") then
-                    local BP = block.PrimaryPart.BodyPosition
-                    local bodyGyro = block.PrimaryPart.BodyGyro
-                    BP.Position = v.Position --+ v.CFrame.LookVector * 10
-                    bodyGyro.CFrame = v.CFrame
-                else
-                    block.PrimaryPart.CanCollide = false
-                    local bodyGyro = Instance.new("BodyGyro", block.PrimaryPart)
-                    bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-					bodyGyro.D = 100
-                	local BP = Instance.new("BodyPosition", block.PrimaryPart)
-                	BP.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
-                	BP.P = 25000
-                	BP.D = 1000
-                	BP.Position = v.Position --+ v.CFrame.LookVector * 10
-                	bodyGyro.CFrame = v.CFrame
+        local count = 0
+        for i,v in pairs(build:GetChildren()) do 
+            if v.ClassName == "Model" and v.Name == "BlockStd" then
+            	local yeatp = false
+            	if v.PrimaryPart.BrickColor == BrickColor.new("Really red") then
+            		yeatp = true
+        			count = 1
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Really blue") then
+    				yeatp = true
+        			count = 2
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("New Yeller") then
+    				yeatp = true
+        			count = 3
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("CGA brown") then
+    				yeatp = true
+        			count = 4
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Magenta") then
+    				yeatp = true
+        			count = 5
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Toothpaste") then
+    				yeatp = true
+        			count = 6
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Lime green") then
+    				yeatp = true
+        			count = 7
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Persimmon") then
+    				yeatp = true
+        			count = 8
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Navy blue") then
+    				yeatp = true
+        			count = 9
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Pink") then
+    				yeatp = true
+        			count = 10
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Tr. Red") then
+    				yeatp = true
+        			count = 11
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Smoky grey") then
+    				yeatp = true
+        			count = 12
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Bright green") then
+    				yeatp = true
+        			count = 13
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Linen") then
+    				yeatp = true
+        			count = 14
+    			elseif v.PrimaryPart.BrickColor == BrickColor.new("Cyan") then
+    				yeatp = true
+        			count = 15
+    			end
+            	
+            	local hrptotp = hrpb[count]
+            	if yeatp then
+	                if v.PrimaryPart:FindFirstChild("BodyPosition") then
+	                    local BP = v.PrimaryPart.BodyPosition
+	                    local bodyGyro = v.PrimaryPart.BodyGyro
+	                    BP.Position = hrptotp.Position --+ v.CFrame.LookVector * 10
+	                    bodyGyro.CFrame = hrptotp.CFrame
+	                else
+	                    v.PrimaryPart.CanCollide = false
+	                    local bodyGyro = Instance.new("BodyGyro", v.PrimaryPart)
+	                    bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+						bodyGyro.D = 100
+	                	local BP = Instance.new("BodyPosition", v.PrimaryPart)
+	                	BP.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+	                	BP.P = 25000
+	                	BP.D = 1000
+	                	BP.Position = hrptotp.Position --+ v.CFrame.LookVector * 10
+	                	bodyGyro.CFrame = hrptotp.CFrame
+	        	    end
         	    end
         	    --block.PrimaryPart.CFrame = v.CFrame
-                count += 1
             end
         end
         RunService.Heartbeat:Wait()
