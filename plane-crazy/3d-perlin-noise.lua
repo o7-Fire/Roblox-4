@@ -4,7 +4,7 @@ local mapSize = 51
 local noiseScale = 10 
 local amplitude = 10
 
-local blocks = {1, 53, 6, 74, 75, 113, 24, 108}
+local blocks = {1, 53, 74, 75, 24, 108}
 for x = mapSize, 0, -1 do
 	for z = mapSize, 0, -1 do
 		for y = mapSize, 0, -1 do
