@@ -117,19 +117,27 @@ end
     
 function FindWord(Pattern)
     if Settings.LongWords == true then
+        local total = {}
         for _, Word in next, LongWords do
             if string.find(Word, Pattern) and not table.find(Used, Word) then
-                table.insert(Used, Word)
+                table.insert(total, Word)
                 return Word
             end
         end
+        local theword = total[math.random(1, #total)]
+        table.insert(Used, theword)
+        return theword
     else
+        local total = {}
         for _, Word in next, Words do
             if string.find(Word, Pattern) and not table.find(Used, Word) then
-                table.insert(Used, Word)
+                table.insert(total, Word)
                 return Word
             end
         end
+        local theword = total[math.random(1, #total)]
+        table.insert(Used, theword)
+        return theword
     end
 end
     
