@@ -121,7 +121,6 @@ function FindWord(Pattern)
         for _, Word in next, LongWords do
             if string.find(Word, Pattern) and not table.find(Used, Word) then
                 table.insert(total, Word)
-                return Word
             end
         end
         local theword = total[math.random(1, #total)]
@@ -132,7 +131,6 @@ function FindWord(Pattern)
         for _, Word in next, Words do
             if string.find(Word, Pattern) and not table.find(Used, Word) then
                 table.insert(total, Word)
-                return Word
             end
         end
         local theword = total[math.random(1, #total)]
