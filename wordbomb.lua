@@ -22,7 +22,7 @@ getgenv().Settings = {
     AutoJoin = true,
     LongWords = false,
     breakscript = false,
-    TypeTime = 4
+    TypeTime = 2
 }
 
 local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/words.txt")
@@ -42,7 +42,6 @@ for line in string.gmatch(Response,"[^\r\n]*") do
         table.insert(LongWords, line)
     end
 end
-
 
 local KeyCodes = {
     A = 0x41,
@@ -107,7 +106,7 @@ function GetCurrentPattern()
     if GameSpace:FindFirstChild("DefaultUI") and GameSpace.DefaultUI:FindFirstChild("GameContainer") and GameSpace.DefaultUI.GameContainer:FindFirstChild("DesktopContainer") then
         local Pattern = ""
         for _, LetterFrame in next, GameSpace.DefaultUI.GameContainer.DesktopContainer.InfoFrameContainer.InfoFrame.TextFrame:GetChildren() do
-            if LetterFrame:IsA("Frame") and LetterFrame.Letter.ImageColor3 ~= Color3.new(255, 255, 255) then
+            if LetterFrame:IsA("Frame") and LetterFrame.Visible == true and LetterFrame.Letter.ImageColor3 ~= Color3.new(255, 255, 255) then
                 Pattern ..= LetterFrame.Letter.TextLabel.Text
             end
         end
@@ -222,7 +221,7 @@ do
     library:FormatWindows()
 end
 
-while wait() do
+while wait(0.5) do
     if Settings.breakscript == true then
         game.CoreGui.imgui:Destroy()
         break
