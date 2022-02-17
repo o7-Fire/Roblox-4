@@ -22,7 +22,7 @@ while true do
     --sell
     for i,v in pairs(plr.Backpack:GetChildren()) do
         wait(0.5)
-        if v.Name == "[Farmer] Carrot" or v.Name == "[Farmer] Tomato" or v.Name == "[Farmer] Corn" then
+        if v.Name == "[Farmer] Carrot" or v.Name == "[Farmer] Tomato" or v.Name == "[Farmer] Corn" or v.Name == "Carrot" or v.Name == "Tomato" or v.Name == "Corn" then
             v.Parent = plr.Character
             local args = {
                 [1] = 41,
@@ -34,7 +34,7 @@ while true do
     end
     --redundancy selling
     for i,v in pairs(plr.Character:GetChildren()) do
-        if v.Name == "[Farmer] Carrot" or v.Name == "[Farmer] Tomato" or v.Name == "[Farmer] Corn" then
+        if v.Name == "[Farmer] Carrot" or v.Name == "[Farmer] Tomato" or v.Name == "[Farmer] Corn" or v.Name == "Carrot" or v.Name == "Tomato" or v.Name == "Corn" then
             local args = {
                 [1] = 41,
                 [2] = workspace.Buildings[plr.Name]:FindFirstChild("Capital Cargo Station"),
