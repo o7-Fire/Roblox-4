@@ -27,6 +27,7 @@ game:GetService("RunService").Stepped:Connect(function()
         end
     elseif UserInputService:IsKeyDown(Enum.KeyCode.H) then
         if doa then
+            wait(2)
             doa = false
             local plr = game.Players.LocalPlayer
             local position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
@@ -48,6 +49,17 @@ game:GetService("RunService").Stepped:Connect(function()
                         [2] = 200
                     }
                     v:FireServer(unpack(args))
+                end
+            end
+            doa = true
+        end
+    elseif UserInputService:IsKeyDown(Enum.KeyCode.B) then
+        if doa then
+            doa = false
+            wait(1)
+            for i,v in pairs(game.Workspace.Map:GetDescendants()) do
+                if v.Name == "ClickDetector" and string.find(v.Parent.Name, "Seat") and v.Parent:FindFirstChild("Seat") then
+                    fireclickdetector(v)
                 end
             end
             doa = true
