@@ -4,8 +4,7 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local uis = game:GetService("UserInputService")
 _G.Whitelist = false -- dont worry about this
 _G.WhitelistCode = ""
-local blocks = {}
-local subdomain = "WhitelistPCTestBuild"
+_G.WhitelistName = ""
 
 function RandomVariable(length)
 	local res = ""
@@ -31,22 +30,18 @@ Tab1:Label("Made by Nexity#3200")
 Tab1:Textbox("Whitelist Code", "Create a code and make sure both people have the same code", true, function(text)
     _G.WhitelistCode = text
 end)
+Tab1:Textbox("Whitelist User", "Input the user (the other person not you) name", true, function(text)
+    _G.WhitelistName = text
+end)
 Tab1:Button("Enable receive data to whitelist user", "Click this to start receiving place remotes from whitelist user", function()
     _G.Whitelist = true
-    game:HttpGet(table.concat({"https://", subdomain, ".nexitysecond.repl.co/user?code=", _G.WhitelistCode, "&name=", game.Players.LocalPlayer.Name, "&active=yes"}))
 end)
 Tab1:Button("Enable send data to whitelist user", "Click this to start sending place remotes to whitelist user", function()
     _G.Whitelist = false
-    game:HttpGet(table.concat({"https://", subdomain, ".nexitysecond.repl.co/user?code=", _G.WhitelistCode, "&name=", game.Players.LocalPlayer.Name, "&active=no"}))
 end)
 Tab1:Button("destroy this GUI", "does what it says", function()
     game:GetService("CoreGui").FluxLib:Destroy()
     _G.DoCheck = ""
-end)
-
--- handle new blocks placed
-game.Workspace.PlayerAircraft:WaitForChild(game.Players.LocalPlayer.Name).ChildAdded:connect(function(v)
-    table.insert(blocks, v)
 end)
 
 -- request handler because of black magic happening in metatable
@@ -74,43 +69,14 @@ spawn(function()
             break
         end
         if _G.Whitelist then
-            local r = game:HttpGet("https://", subdomain, ".nexitysecond.repl.co/receive?code=" .. _G.WhitelistCode)
-            local splitted = Split(r, "SPACE")
-            local datatodo = Split(splitted, "ZXC")[2]
+            local r = game:HttpGet("https://WhitelistPC.nexitysecond.repl.co/receive?code=" .. _G.WhitelistCode)
+            local datatodo = Split(r, "SPACE")
             for i,v in pairs(datatodo) do
                 print(v)
-                
-                if Split(splitted, "ZXC")[1] then
-                    local timea = os.time()
-                    game.Workspace.PlayerAircraft:WaitForChild(game.Players.LocalPlayer.Name).ChildAdded:connect(function(b)
-                        table.insert(blocks, b)
-                    end)
-                end
-                
                 spawn(function()
                     loadstring(v)()
                 end)
-                
-                if Split(splitted, "ZXC")[1] then
-                    local oldb = len(blocks)
-                    local theblockname = ""
-                    while true do
-                        if len(blocks) ~= oldb then
-                            local name = Split(splitted, "ZXC")[3]
-                            blocks[len(blocks)].Name = name
-                            theblockname = name
-                            break
-                        end
-                        wait()
-                    end
-                end
-                
-                local newtime = os.time()
-                if newtime - timea > 0.7 then
-                    wait(newtime - timea)
-                else
-                    wait(0.7)
-                end
+                wait(0.7)
             end
         end
         wait()
@@ -126,33 +92,31 @@ mt.__namecall = newcclosure(function(remote,...)
    args = {...}
    method = tostring(getnamecallmethod())
    if method == "InvokeServer" and tostring(remote) == "PlaceBIockRegion" and _G.DoCheck == DoCheck and _G.Whitelist == false then
-        spawn(function()
-            local oldb = len(blocks)
-            local theblockname = ""
-            while true do
-                if len(blocks) ~= oldb then
-                    local randomn = RandomVariable(20)
-                    blocks[len(blocks)].Name = randomn
-                    theblockname = randomn
-                    break
-                end
-                wait()
+        local YourXOffset = ""
+        local TheirXOffset = ""
+        for i,v in pairs(workspace.BuildingZones:GetChildren()) do 
+            if tostring(v.Owner.Value) == game.Players.LocalPlayer.Name then
+                YourXOffset = v.CFrame.x
             end
-            local a2 = tostring(args[2]):gsub(",", "")
-            print(args[1])
-            local datatosend = table.concat(
-                {
-                    tostring(args[1].x), " ", tostring(args[1].y), " ", tostring(args[1].z) .. "N" .. a2 .. "N" .. tostring(args[3]) .. "N" .. tostring(args[4])
-                })
-            datatosend = datatosend:gsub(" ", "S")
-            local requesttosend = table.concat({"https://", subdomain, ".nexitysecond.repl.co/send?code=", _G.WhitelistCode, "&remote=place", "&block=", theblockname, "&data=", datatosend})
-            _G.DoDoSend = true
-            _G.DoDoToSend = requesttosend
-        end)
-        return old(remote,...)
-    else
-        return old(remote,...)
-    end
+            if tostring(v.Owner.Value) == _G.WhitelistName then
+                TheirXOffset = v.CFrame.x
+            end
+        end
+        
+        print("ok", YourXOffset, TheirXOffset)
+        print("args", args)
+        print(tostring(math.round(YourXOffset - TheirXOffset) - args[1].x))
+        local a2 = tostring(args[2]):gsub(",", "")
+        local datatosend = table.concat(
+            {
+                tostring(math.round(YourXOffset - TheirXOffset) - args[1].x), " ", tostring(args[1].y), " ", tostring(args[1].z) .. "N" .. a2 .. "N" .. tostring(args[3]) .. "N" .. tostring(args[4])
+            })
+        datatosend = datatosend:gsub(" ", "S")
+        local requesttosend = table.concat({"https://WhitelistPC.nexitysecond.repl.co/send?code=", _G.WhitelistCode, "&data=", datatosend})
+        _G.DoDoSend = true
+        _G.DoDoToSend = requesttosend
+   end
+   return old(remote,...)
 end)
 
 setreadonly(mt,true)
