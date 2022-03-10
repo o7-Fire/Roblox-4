@@ -46,6 +46,7 @@ spawn(function()
             numcount = numcount + 1
             local money = game.Players.LocalPlayer.PlayerData.Currency.Value
             if numcount == 250 then
+                say(waitingpaymentuser .. " waited too long. Play by using '!coinflip <amount>'")
                 waitingpayment = false
                 numcount = 0
             end
