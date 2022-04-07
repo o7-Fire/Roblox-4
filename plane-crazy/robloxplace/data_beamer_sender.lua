@@ -2,16 +2,6 @@ local mode = "send"
 -- receive = be the one placing the blocks
 -- send = the account to give instructions to place blocks
 
-local function from_hex(hex)
-        local r, g, b = string.match(hex, "^#?(%w%w)(%w%w)(%w%w)$")
-        return Color3.fromRGB(tonumber(r, 16),
-                tonumber(g, 16), tonumber(b, 16))
-end
-local function to_hex(color)
-        return string.format("#%02X%02X%02X", color.R * 0xFF,
-                color.G * 0xFF, color.B * 0xFF)
-end
-
 function Split(s, delimiter)
     result = {};
     for match in (s..delimiter):gmatch("(.-)"..delimiter) do
@@ -45,7 +35,9 @@ mouse.Button1Down:Connect(function()
 		--print(mouse.Target.Name)
 		local thename = mouse.Target.Name
 		if thename:find("T", 1, true) == 1 then
-		    local r = game:HttpGet("https://help-bots-for-rplace-copy.nexitysecond.repl.co/send?data=" .. thename .. "SPLITLINE" .. to_hex(color))
+		    spawn(function()
+		    local r = game:HttpGet("http://192.168.0.166:8080/send?data=" .. thename .. "SPLITLINE" .. color.R .. "U" .. color.G .. "U" .. color.B)
+		    end)
 		end
 	end
 end)
