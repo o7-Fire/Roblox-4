@@ -45,7 +45,7 @@ mouse.Button1Down:Connect(function()
 		--print(mouse.Target.Name)
 		local thename = mouse.Target.Name
 		if thename:find("T", 1, true) == 1 then
-		    local r = game:HttpGet("https://help-bots-for-rplace-copy.nexitysecond.repl.co/send?" .. thename .. "SPLITLINE" .. to_hex(color))
+		    local r = game:HttpGet("https://help-bots-for-rplace-copy.nexitysecond.repl.co/send?data=" .. thename .. "SPLITLINE" .. to_hex(color))
 		end
 	end
 end)
