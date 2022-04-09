@@ -24,7 +24,7 @@ local SDFUSEGUHSRFGUI = randomvar
 local color = Color3.new(0,0,0)
 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.PaintMenu.Colors:GetChildren()) do
     v.MouseButton1Click:Connect(function()
-        local bgc = v.BackgroundColor3
+        local bgc = v.ImageColor3
         color = bgc
     end)
 end
