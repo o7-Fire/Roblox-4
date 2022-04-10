@@ -1,3 +1,29 @@
+-- insta break stuff
+local settings = {repeatamount = 5, inclusions = {"damage_item"}}
+
+local mt = getrawmetatable(game)
+local old = mt.__namecall
+setreadonly(mt, false)
+local function isincluded(uh)
+   for i,o in next, settings.inclusions do
+       if uh.Name == o then
+           return true
+       end
+   end
+   return false
+end
+mt.__namecall = function(uh, ...)
+   local args = {...}
+   local method = getnamecallmethod()
+   if (method == "FireServer" or method == "InvokeServer") and isincluded(uh) then
+       for i = 1,settings.repeatamount do
+           old(uh, ...)
+       end
+   end
+   return old(uh, ...)
+end
+setreadonly(mt, true)
+
 -- auto send items to wagon
 spawn(function()
     while true do
