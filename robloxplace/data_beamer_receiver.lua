@@ -22,7 +22,7 @@ _G.SDFUSEGUHSRFGUI = randomvar
 local SDFUSEGUHSRFGUI = randomvar
 spawn(function()
     while true do
-        wait(3.5)
+        wait(4.3)
         if _G.SDFUSEGUHSRFGUI == randomvar then
             pcall(function()
                 local r = game:HttpGet("http://192.168.0.166:8080/receive")
