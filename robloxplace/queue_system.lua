@@ -50,7 +50,7 @@ spawn(function()
                     [2] = color
                 }
                 game:GetService("ReplicatedStorage").UpdateColor:FireServer(unpack(args))
-                wait(4.2)
+                wait(5.2)
             end
         else
             break
