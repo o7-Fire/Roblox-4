@@ -51,80 +51,6 @@ function paintline(x, y, x3, y3, r, g, b)
         end
     end
 end
-
-function colournumber(x, y, num)
-    --print("colournumber x(" .. tostring(x) .. ") y(" .. tostring(y) .. ") num(" .. tostring(num) .. ")")
-    if num == 1 then
-        paintline(x, y, x, y+4, 0, 0, 0)
-        paintline(x+1, y, x+1, y, 0, 0, 0)
-        paintline(x+1, y+2, x+1, y+2, 0, 0, 0)
-        paintline(x+1, y+4, x+1, y+4, 0, 0, 0)
-        paintline(x+2, y, x+2, y+4, 1, 1, 1)
-    elseif num == 2 then
-        paintline(x, y+4, x+2, y+4, 1, 1, 1)
-        paintline(x+2, y+3, x+2, y+2, 1, 1, 1)
-        paintline(x+1, y+2, x, y+2, 1, 1, 1)
-        paintline(x, y+1, x, y, 1, 1, 1)
-        paintline(x+1, y, x+2, y, 1, 1, 1)
-        paintline(x, y+3, x, y+3, 0, 0, 0)
-        paintline(x+2, y+1, x+2, y+1, 0, 0, 0)
-    elseif num == 3 then
-        paintline(x, y+4, x+1, y+4, 1, 1, 1)
-        paintline(x, y+2, x+1, y+2, 1, 1, 1)
-        paintline(x, y, x+1, y, 1, 1, 1)
-        paintline(x+2, y+4, x+2, y, 1, 1, 1)
-        paintline(x, y+3, x, y+3, 0, 0, 0)
-        paintline(x, y+1, x, y+3, 0, 0, 0)
-    elseif num == 4 then
-        paintline(x, y+4, x, y+2, 1, 1, 1)
-        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
-        paintline(x+2, y+4, x+2, y,  1, 1, 1)
-        paintline(x, y+1, x, y, 0, 0, 0)
-        paintline(x+1, y+4, x+1, y+4, 0, 0, 0)
-        paintline(x+1, y, x+1, y, 0, 0, 0)
-    elseif num == 5 then
-        paintline(x, y+4, x+2, y+4, 1, 1, 1)
-        paintline(x, y+3, x, y+2, 1, 1, 1)
-        paintline(x+1, y+2, x+2, y+2, 1, 1, 1)
-        paintline(x+2, y+2, x+2, y, 1, 1, 1)
-        paintline(x, y, x+1, y, 1, 1, 1)
-        paintline(x, y+1, x, y+1, 0, 0, 0)
-        paintline(x+2, y+3, x+2, y+3, 0, 0, 0)
-    elseif num == 6 then
-        paintline(x, y+4, x, y, 1, 1, 1)
-        paintline(x+1, y+4, x+2, y+4, 1, 1, 1)
-        paintline(x+1, y+2, x+2, y+2, 1, 1, 1)
-        paintline(x+2, y+1, x+2, y, 1, 1, 1)
-        paintline(x, y+1, x, y, 1, 1, 1)
-        paintline(x+1, y, x+1, y, 1, 1, 1)
-        paintline(x+2, y+3, x+2, y+3, 0, 0, 0)
-    elseif num == 7 then
-        paintline(x, y+4, x+2, y+4, 1, 1, 1)
-        paintline(x+2, y+3, x+2, y, 1, 1, 1)
-        paintline(x, y+3, x, y, 0, 0, 0)
-        paintline(x+1, y+2, x+1, y+2, 0, 0, 0)
-        paintline(x+1, y, x+1, y, 0, 0, 0)
-    elseif num == 8 then
-        paintline(x, y+4, x, y, 1, 1, 1)
-        paintline(x+2, y+4, x+2, y, 1, 1, 1)
-        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
-        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
-        paintline(x+1, y, x+1, y, 1, 1, 1)
-    elseif num == 9 then
-        paintline(x+2, y+4, x+2, y, 1, 1, 1)
-        paintline(x, y+4, x+1, y+4, 1, 1, 1)
-        paintline(x, y+3, x, y+2, 1, 1, 1)
-        paintline(x+1, y+2, x+1, y+2, 1, 1, 1)
-        paintline(x, y+1, x, y, 0, 0, 0)
-        paintline(x+1, y, x+1, y, 0, 0, 0)
-    elseif num == 0 then
-        paintline(x, y+4, x, y, 1, 1, 1)
-        paintline(x+2, y+4, x+2, y, 1, 1, 1)
-        paintline(x+1, y+4, x+1, y+4, 1, 1, 1)
-        paintline(x+1, y+2, x+1, y+2, 0, 0, 0)
-        paintline(x+1, y, x+1, y, 1, 1, 1)
-    end
-end
     
 local checkloop = 0
 local waitloop = 0
@@ -173,26 +99,6 @@ for assad2,playerzone in pairs(game.Workspace.BuildingZones:GetChildren()) do
         for framecount, frame in pairs(string_content) do
             local skipframe = 0
             if framecount > 90 and framecount % (skipframe + 1) == 0 then
-                if framecount % 30 == 0 then
-                    local framestring = tostring(framecount / 30)
-                    for zeros=#tostring(framecount / 30)+1, 4 do
-                        framestring = "0" .. framestring
-                    end
-                    --print(framestring)
-                    local charloop = 0
-                    for charc=1, #framestring do
-                        charloop += 1
-                        if charloop == 1 then
-                            colournumber(2, 3, tonumber(string.sub(framestring, charc, charc)))
-                        elseif charloop == 2 then
-                            colournumber(6, 3, tonumber(string.sub(framestring, charc, charc)))
-                        elseif charloop == 3 then
-                            colournumber(10, 3, tonumber(string.sub(framestring, charc, charc)))
-                        elseif charloop == 4 then
-                            colournumber(14, 3, tonumber(string.sub(framestring, charc, charc)))
-                        end
-                    end
-                end
                 print(framecount)
                 local lastframe_table = {}
                 local frame_table = {}
