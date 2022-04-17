@@ -1,5 +1,5 @@
 _G.Enabled = true
-    
+
 function Split(s, delimiter)
     result = {};
     for match in (s..delimiter):gmatch("(.-)"..delimiter) do
@@ -68,6 +68,9 @@ while true do
                     end
                 elseif totalpossiblebombs == tonumber(tile.SurfaceGui.TextLabel.Text) then
                     for i,stile in pairs(safetiles) do
+                        if stile:FindFirstChild("TouchInterest") then
+                            stile.TouchInterest:Destroy()
+                        end
                         if stile.Color ~= Color3.new(1, 0, 0) then
                             stile.Color = Color3.new(1, 0, 0)
                         end
