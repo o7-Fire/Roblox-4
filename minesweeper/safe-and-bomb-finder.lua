@@ -47,11 +47,9 @@ while true do
                     for z=-1, 1, 1 do
                         if game.Workspace.MS.Parts:FindFirstChild(tostring(tilex + x) .. "|" .. tostring(tilez + z)) then
                             local nearbytile = game.Workspace.MS.Parts[tostring(tilex + x) .. "|" .. tostring(tilez + z)]
-                            if nearbytile:FindFirstChild("Flag") or nearbytile.BrickColor == BrickColor.new("Really red") then
-                                totalnearbybombs = totalnearbybombs + 1
-                            end
                             if nearbytile.BrickColor == BrickColor.new("Really red") then
                                 totalpossiblebombs = totalpossiblebombs + 1
+                                totalnearbybombs = totalnearbybombs + 1
                             end
                             if nearbytile.BrickColor == BrickColor.new("Moss") or nearbytile.BrickColor == BrickColor.new("Shamrock") then
                                 totalpossiblebombs = totalpossiblebombs + 1
