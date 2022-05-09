@@ -3,6 +3,7 @@ local settings = {"Rough", "Coarse", "1:1", "Fine", "Very Fine"}
 local settingselected = "1:1"
 local toolselected = ""
 local hitboxexpander = false
+local autolocket = false
 local leverremote = game:GetService("ReplicatedStorage").Remotes:FindFirstChild("914Lever")
 
 function lever(setting, item)
@@ -57,18 +58,13 @@ local general = cctab:CreateSection({
     Name = "Others"
 })
 
-general:AddButton({
+general:AddToggle({
     Name = "Auto Lovecraftian Locket",
     Callback = function()
-        while wait(0.1) do
-            if game.Players.LocalPlayer.Character.Humanoid.Health > 350 then
-                local args = {
-                [1] = "Lovecraftian Locket"
-                }
-                game:GetService("ReplicatedStorage").Remotes.DropItem:InvokeServer(unpack(args))
-                wait(0.2)
-                game:GetService("ReplicatedStorage").Remotes.UseLocket:FireServer()
-            end
+        if autolocket then
+            autolocket = false
+        else
+            autolocket = true
         end
     end
 })
@@ -83,6 +79,24 @@ general:AddToggle({
         end
     end
 })
+
+spawn(function()
+    while true do
+        if autolocket then
+            wait(0.2)
+            if game.Players.LocalPlayer.Character.Humanoid.Health > 350 then
+                local args = {
+                [1] = "Lovecraftian Locket"
+                }
+                game:GetService("ReplicatedStorage").Remotes.DropItem:InvokeServer(unpack(args))
+                wait(0.2)
+                game:GetService("ReplicatedStorage").Remotes.UseLocket:FireServer()
+            end
+        else
+            wait(1)
+        end
+    end
+end)
 
 spawn(function()
     while wait(0.1) do
