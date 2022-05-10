@@ -3,6 +3,7 @@ local settings = {"Rough", "Coarse", "1:1", "Fine", "Very Fine"}
 local settingselected = "1:1"
 local toolselected = ""
 local hitboxexpander = false
+local chams = false
 local autolocket = false
 local leverremote = game:GetService("ReplicatedStorage").Remotes:FindFirstChild("914Lever")
 
@@ -29,6 +30,17 @@ local settingmenu = cctab:CreateSection({
 local itemsmenu = cctab:CreateSection({
     Name = "Tools"
 })
+itemsmenu:AddLabel({
+    Name = "Type in tool name"
+})
+itemsmenu:AddTextbox({
+    Name = "hover over tool to find name",
+    Value = "Pistol",
+	Callback = function(tool)
+	    toolselected = tool
+	end
+})
+
 
 for _, setting in pairs(settings) do
     settingmenu:AddButton({
@@ -38,14 +50,6 @@ for _, setting in pairs(settings) do
         end
     })
 end
-
-itemsmenu:AddSearchBox({
-    Name = "Select tools",
-    List = game.Players.LocalPlayer.Backpack,
-	Callback = function(tool)
-	    toolselected = tool.Name
-	end
-})
 
 itemsmenu:AddButton({
     Name = "Activate Machine",
@@ -80,6 +84,17 @@ general:AddToggle({
     end
 })
 
+general:AddToggle({
+    Name = "Chams",
+    Callback = function()
+        if chams then
+            chams = false
+        else
+            chams = true
+        end
+    end
+})
+
 spawn(function()
     while true do
         if autolocket then
@@ -100,11 +115,8 @@ end)
 
 spawn(function()
     while wait(0.1) do
-        local sg = game:GetService("StarterGui")
         local plrs = game:GetService("Players")
         local lplr = plrs.LocalPlayer
-        local mouse = lplr:GetMouse()
-        
         function dov(v)
             pcall(function()
                 v.Character.HumanoidRootPart.Size = Vector3.new(7, 7, 7)
@@ -124,9 +136,9 @@ spawn(function()
             end)
         end
         if hitboxexpander then
-            if lplr.Name == "Prisoner" or lplr.Name == "Chaos Insurgency" then
+            if tostring(lplr.Team) == "Prisoner" or tostring(lplr.Team) == "Chaos Insurgency" then
                 for _, v in pairs(plrs:GetPlayers()) do
-                    if tostring(v.Name) ~= tostring(lplr.Name) and tostring(v.Team) ~= "Prisoner" and tostring(v.Team) ~= "Chaos Insurgency" then --This is where I think the problem might be, it's not reading the last and condition correctly
+                    if tostring(v.Name) ~= tostring(lplr.Name) and tostring(v.Team) ~= "Prisoner" and tostring(v.Team) ~= "Chaos Insurgency" then
                         dov(v)
                     else
                         doy(v)
@@ -134,7 +146,7 @@ spawn(function()
                 end
             else
                 for _, v in pairs(plrs:GetPlayers()) do
-                    if tostring(v.Name) ~= tostring(lplr.Name) and tostring(v.Team) ~= "Foundation" then --This is where I think the problem might be, it's not reading the last and condition correctly
+                    if tostring(v.Name) ~= tostring(lplr.Name) and tostring(v.Team) ~= "Foundation" then
                         dov(v)
                     else
                         doy(v)
@@ -163,7 +175,7 @@ spawn(function()
                 if not isnil(v.Character) then
                     for _,k in pairs(v.Character:GetChildren()) do
                         if k:IsA'BasePart' and k.Name ~= "HumanoidRootPart" then
-                            if hitboxexpander then
+                            if chams then
                                 if k:FindFirstChild("Cham") then
                                     k.Cham.Transparency=.98
                                 else
