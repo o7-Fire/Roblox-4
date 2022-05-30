@@ -1,5 +1,5 @@
 _G.Enabled = true
-_G.Debugging = true -- change to true if the script doesnt work to see errors
+_G.Debugging = false -- change to true if the script doesnt work to see errors
 
 local start = Vector3.new(75.5, 896.441, 142.5)
 
