@@ -21,11 +21,13 @@ function upgrade(v)
 end
 
 for i,v in pairs(game.Workspace.Towers:GetChildren()) do
-    if v.Owner.Value == game.Players.LocalPlayer.Name then
-        if v.Upgrades:FindFirstChild("6") then
-            upgrade(v)
-            if dowait then
-                wait(1)
+    if v:FindFirstChild("Owner") then
+        if v.Owner.Value == game.Players.LocalPlayer.Name then
+            if v.Upgrades:FindFirstChild("6") then
+                upgrade(v)
+                if dowait then
+                    wait(1)
+                end
             end
         end
     end
