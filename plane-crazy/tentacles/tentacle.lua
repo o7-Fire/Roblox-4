@@ -37,17 +37,17 @@ function applybodygyro(part, CFrame, Position, radius)
     end
 end
 
-function setupconstraints(part)
+function setupconstraints(part, offset)
     local a = Instance.new("Attachment")
     a.Name = "AttachmentTop"
     a.Parent = part
     a.Axis = Vector3.new(0, 0, 0)
-    a.CFrame = CFrame.new(0, 1.25, 0)
+    a.CFrame = CFrame.new(0, 0, offset)
     local a = Instance.new("Attachment")
     a.Name = "AttachmentBottom"
     a.Parent = part
     a.Axis = Vector3.new(0, 0, 0)
-    a.CFrame = CFrame.new(0, -1.25, 0)
+    a.CFrame = CFrame.new(0, 0, -offset)
 end
 
 function setuphingeconstraints(part, lastpart)
@@ -71,9 +71,9 @@ local firstpartcf = hrp.CFrame
 applybodygyro(parts[1], firstpartcf + Vector3.new(0, 150, 0), firstpartcf.Position + Vector3.new(0, 150, 0), 3)
 for i, part in pairs(parts) do
     if i == 1 then
-        setupconstraints(part)
+        setupconstraints(part, 5)
     else
-        setupconstraints(part)
+        setupconstraints(part, 5)
         setuphingeconstraints(part, parts[i-1])
     end
 end
