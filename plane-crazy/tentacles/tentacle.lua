@@ -2,9 +2,19 @@ local plr = game.Players.LocalPlayer
 local character = plr.Character
 local hrp = character:WaitForChild("HumanoidRootPart")
 local Mouse = plr:GetMouse()
+local inputService = game:GetService("UserInputService")
 
 local parts = {}
 _G.Enabled = true
+
+local function isMouseButtonDown(inputType)
+	for _,button in pairs(inputService:GetMouseButtonsPressed()) do
+		if button.UserInputType == inputType then
+			return true
+		end
+	end
+	return false
+end
 
 function RandomVariable(length)
 	local res = ""
@@ -16,11 +26,11 @@ end
 local DoCheck = RandomVariable(20)
 _G.DoCheck = DoCheck
 
-function applybodygyro(part, CFrame, Position, radius)
+function applybodygyro(part, CFrame)
     if part:FindFirstChild("BodyPosition") then
         local BP = part.BodyPosition
         local bodyGyro = part.BodyGyro
-        BP.Position = Position
+        BP.Position = CFrame.Position
         bodyGyro.CFrame = CFrame
     else
         local bodyGyro = Instance.new("BodyGyro")
@@ -32,7 +42,7 @@ function applybodygyro(part, CFrame, Position, radius)
     	BP.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
     	BP.P = 25000
     	BP.D = 1000
-    	BP.Position = Position
+    	BP.Position = CFrame.Position
     	bodyGyro.CFrame = CFrame
     end
 end
@@ -50,39 +60,50 @@ function setupconstraints(part, offset)
     a.CFrame = CFrame.new(0, 0, -offset)
 end
 
-function setuphingeconstraints(part, lastpart)
+function setupbsconstraints(part, lastpart)
     local a = Instance.new("BallSocketConstraint")
     a.Parent = part
     a.Name = "BallSocketConstraint"
     a.Attachment0 = part.AttachmentBottom
     a.Attachment1 = lastpart.AttachmentTop
-    a.MaxFrictionTorque = 300000
-    a.Radius = 2.5
+    a.LimitsEnabled = true
+    a.UpperAngle = 5
+    a.TwistLimitsEnabled = true
+    a.TwistUpperAngle = 10
+    a.TwistLowerAngle = -10
+    a.MaxFrictionTorque = 5000000
 end
 
+local p = Instance.new("Part")
+p.Parent = game.Workspace
+p.Name = "VGBlock"
+p.CFrame = hrp.CFrame
+p.Size = Vector3.new(2.5, 2.5, 2.5)
+p.Transparency = 1
+table.insert(parts, p)
 for i, part in pairs(game.Workspace[game.Players.LocalPlayer.Name..'Aircraft']:GetChildren()) do
-    if part.ClassName == "Model" then
+    if part.ClassName == "Model" and part.Name ~= "PilotSeat" then
 	    table.insert(parts, part.PrimaryPart) -- put the parts into the table
+	    part.PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0.4, 0.1, 1, 1, 1)
 	    part.PrimaryPart.CanCollide = true
     end
 end
 
-local firstpartcf = hrp.CFrame
-applybodygyro(parts[1], firstpartcf + Vector3.new(0, 150, 0), firstpartcf.Position + Vector3.new(0, 150, 0), 3)
 for i, part in pairs(parts) do
     if i == 1 then
-        setupconstraints(part, 5)
+        setupconstraints(part, 7)
     else
-        setupconstraints(part, 5)
-        setuphingeconstraints(part, parts[i-1])
+        setupconstraints(part, 7)
+        setupbsconstraints(part, parts[i-1])
     end
 end
 
---[[
 while wait(0.1) do
     if _G.Enabled and _G.DoCheck == DoCheck then
-    	-- todo here
+        local cf = character.HumanoidRootPart.CFrame
+        applybodygyro(parts[1], cf * CFrame.Angles(0, math.rad(180), 0) + Vector3.new(0, -15, 0))
+    	local lastpart = parts[#parts]
 	else
 	    break
     end
-end]]
+end
