@@ -13,23 +13,25 @@ game:GetService("RunService").Stepped:Connect(function()
         if doa then
             doa = false
             for i,v in pairs(game.Workspace.Map:GetDescendants()) do
-                local seat = ""
-                local chassi = ""
-                if v.Name == "DriverSeat" then
-                    seat = v.Seat
-                    chassi = v.Parent.Parent
-                elseif v.Name == "GunnerSeat" then
-                    seat = v.Seat
-                    chassi = v.Parent.Parent
-                elseif v.Name == "CommSeat" then
-                    chassi = v.Parent
-                    seat = v
-                end
-                if seat ~= "" and seat.Occupant ~= nil then
-                    if seat.Occupant.Parent.Name == LocalPlayer.Name then
-                        chassi.Turret.Cannon.CannonFired:FireServer(unpack(args))
+                pcall(function() -- apologies for being lazy
+                    local seat = ""
+                    local chassi = ""
+                    if v.Name == "DriverSeat" then
+                        seat = v.Seat
+                        chassi = v.Parent.Parent
+                    elseif v.Name == "GunnerSeat" then
+                        seat = v.Seat
+                        chassi = v.Parent.Parent
+                    elseif v.Name == "CommSeat" then
+                        chassi = v.Parent
+                        seat = v
                     end
-                end
+                    if seat ~= "" and seat.Occupant ~= nil then
+                        if seat.Occupant.Parent.Name == LocalPlayer.Name then
+                            chassi.Turret.Cannon.CannonFired:FireServer(unpack(args))
+                        end
+                    end
+                end)
             end
             wait(0.2)
             doa = true
