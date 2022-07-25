@@ -20,7 +20,7 @@ function Split(s, delimiter)
    return result;
 end
 
-local data = game:HttpGet("https://smhreplitissotrashathandlingtonsoffileswhydoievenuseit.nexitysecond.repl.co/frames3")
+local data = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/the-booth-plaza/bad_apple_frames.txt")
 local splitteddata = Split(data, "N")
 
 for fhnrteyrtnhi,line in pairs(splitteddata) do
