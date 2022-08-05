@@ -82,29 +82,31 @@ function Split(s, delimiter)
 end
 
 local data = readfile("nframes/amongus.txt")
-local splitteddata = Split(data, "N")
+local splitteddata = Split(data:sub(1, -2), "N")
 
 _G.Enabled = true
-for fhnrteyrtnhi,line in pairs(splitteddata) do
-    if _G.Enabled then
-       local finalstring = ""
-       local currentd = 1
-       local themlines = Split(line:sub(1, -2), "A")
-       for i, lineb in pairs(themlines) do
-           --print(line:sub(-500))
-           local rgb = Split(lineb, " ")
-           local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
-           
-           if currentd ~= 50 then
-               finalstring ..= chara
-           else
-               finalstring ..= chara .. "\n"
-               currentd = 0
+while _G.Enabled do -- remove this if you dont want it to loop
+    for fhnrteyrtnhi,line in pairs(splitteddata) do
+        if _G.Enabled then
+           local finalstring = ""
+           local currentd = 1
+           local themlines = Split(line:sub(1, -2), "A")
+           for i, lineb in pairs(themlines) do
+               --print(line:sub(-500))
+               local rgb = Split(lineb, " ")
+               local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
+               
+               if currentd ~= 50 then
+                   finalstring ..= chara
+               else
+                   finalstring ..= chara .. "\n"
+                   currentd = 0
+               end
+               currentd += 1
            end
-           currentd += 1
+           --print(finalstring)
+           coroutine.wrap(update)(finalstring)
+           task.wait(.03)
        end
-       print(finalstring)
-       coroutine.wrap(update)(finalstring)
-       task.wait(.03)
-   end
+    end
 end
