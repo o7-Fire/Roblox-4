@@ -1,4 +1,4 @@
-_G.Enabled = true
+_G.Enabled = false
 --local data = readfile("nframes/amongus.txt")
 local data = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/the-booth-plaza/amongus.txt") -- prerendered amongus video
 
@@ -80,26 +80,24 @@ function Split(s, delimiter)
 end
 
 local splitteddata = Split(data:sub(1, -2), "N")
-while _G.Enabled do -- remove this if you dont want it to loop
-    for fhnrteyrtnhi,line in pairs(splitteddata) do
-        if _G.Enabled then
-           local finalstring = ""
-           local currentd = 1
-           local themlines = Split(line:sub(1, -2), "A")
-           for i, lineb in pairs(themlines) do
-               local rgb = Split(lineb, " ")
-               local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
-               
-               if currentd ~= 50 then
-                   finalstring ..= chara
-               else
-                   finalstring ..= chara .. "\n"
-                   currentd = 0
-               end
-               currentd += 1
+for fhnrteyrtnhi,line in pairs(splitteddata) do
+    if _G.Enabled then
+       local finalstring = ""
+       local currentd = 1
+       local themlines = Split(line:sub(1, -2), "A")
+       for i, lineb in pairs(themlines) do
+           local rgb = Split(lineb, " ")
+           local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
+           
+           if currentd ~= 50 then
+               finalstring ..= chara
+           else
+               finalstring ..= chara .. "\n"
+               currentd = 0
            end
-           coroutine.wrap(update)(finalstring)
-           task.wait(.03)
+           currentd += 1
        end
-    end
+       coroutine.wrap(update)(finalstring)
+       task.wait(.03)
+   end
 end
