@@ -1,4 +1,4 @@
-_G.Enabled = false
+_G.Enabled = true
 --local data = readfile("nframes/amongus.txt")
 local data = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/the-booth-plaza/amongus.txt") -- prerendered amongus video
 
