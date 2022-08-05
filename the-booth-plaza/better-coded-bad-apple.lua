@@ -30,7 +30,8 @@ for fhnrteyrtnhi,line in pairs(splitteddata) do
        local currentd = 0
        local linecount = 0
        for i=1, #line do
-           if linecount < 28 then
+           if linecount < 38 then -- here you can change how high the thing is
+                -- this is because the format for it might be broken for other games
                local chara = ""
                --print("Chara " .. string.sub(line, i, i))
                if string.sub(line, i, i) == "A" then
