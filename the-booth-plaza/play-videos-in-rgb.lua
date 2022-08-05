@@ -1,3 +1,7 @@
+_G.Enabled = true
+--local data = readfile("nframes/amongus.txt")
+local data = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/the-booth-plaza/amongus.txt") -- prerendered amongus video
+
 function update(text)
     local args = {
         [1] = "Update",
@@ -81,10 +85,7 @@ function Split(s, delimiter)
    return result;
 end
 
-local data = readfile("nframes/amongus.txt")
 local splitteddata = Split(data:sub(1, -2), "N")
-
-_G.Enabled = true
 while _G.Enabled do -- remove this if you dont want it to loop
     for fhnrteyrtnhi,line in pairs(splitteddata) do
         if _G.Enabled then
