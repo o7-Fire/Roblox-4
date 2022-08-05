@@ -14,10 +14,6 @@ function update(text)
     game:GetService("ReplicatedStorage").CustomiseBooth:FireServer(unpack(args))
 end
 
-local colourthreshold = 25
-local ct = colourthreshold
-local hct = math.round(colourthreshold / 2)
-local rct = 255 - ct
 local colours = {
     ["black"] = {0, 0, 0},
     ["white"] = {255, 255, 255},
@@ -44,10 +40,8 @@ function getcolorforrange(r, g, b)
             closestint = totalint
             closestcolour = i
         end
-        --print(totalint)
     end
     
-    --print(closestcolour)
     if closestcolour == "black" then
         return "🖤"
     elseif closestcolour == "white" then
@@ -93,7 +87,6 @@ while _G.Enabled do -- remove this if you dont want it to loop
            local currentd = 1
            local themlines = Split(line:sub(1, -2), "A")
            for i, lineb in pairs(themlines) do
-               --print(line:sub(-500))
                local rgb = Split(lineb, " ")
                local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
                
@@ -105,7 +98,6 @@ while _G.Enabled do -- remove this if you dont want it to loop
                end
                currentd += 1
            end
-           --print(finalstring)
            coroutine.wrap(update)(finalstring)
            task.wait(.03)
        end
