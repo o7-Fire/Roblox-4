@@ -22,7 +22,10 @@ local colours = {
     ["blue"] = {0, 0, 255},
     ["brown"] = {118, 85, 77},
     ["lightbrown"] = {165, 113, 78},
-    ["green"] = {0, 255, 0},
+    ["verylightbrown"] = {171, 149, 132},
+    ["pale"] = {255, 204, 153},
+    ["green"] = {108, 187, 60},
+    ["lightgreen"] = {153, 198, 142},
     ["orange"] = {255, 165, 0},
     ["purple"] = {147, 112, 211},
     ["red"] = {255, 0, 0},
@@ -56,8 +59,14 @@ function getcolorforrange(r, g, b)
         return "🤎"
     elseif closestcolour == "lightbrown" then
         return "🧤"
+    elseif closestcolour == "verylightbrown" then
+        return "📜"
+    elseif closestcolour == "pale" then
+        return "🏻"
     elseif closestcolour == "green" then
         return "💚"
+    elseif closestcolour == "lightgreen" then
+        return "🌵"
     elseif closestcolour == "orange" then
         return "🧡"
     elseif closestcolour == "purple" then
