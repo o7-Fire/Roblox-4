@@ -99,9 +99,9 @@ for fhnrteyrtnhi,line in pairs(splitteddata) do
            local chara = getcolorforrange(tonumber(rgb[1]), tonumber(rgb[2]), tonumber(rgb[3]))
            
            if currentd ~= 50 then
-               finalstring ..= chara
+               finalstring = finalstring .. chara
            else
-               finalstring ..= chara .. "\n"
+               finalstring = finalstring .. chara .. "\n"
                currentd = 0
            end
            currentd += 1
