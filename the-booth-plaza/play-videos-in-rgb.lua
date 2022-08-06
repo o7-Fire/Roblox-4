@@ -1,5 +1,5 @@
 _G.Enabled = true
---local data = readfile("nframes/amongus.txt")
+--local data = readfile("nframes/owl.txt")
 local data = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/the-booth-plaza/amongus.txt") -- prerendered amongus video
 
 function update(text)
@@ -15,22 +15,22 @@ function update(text)
 end
 
 local colours = {
-    ["black"] = {0, 0, 0},
-    ["white"] = {255, 255, 255},
-    ["gray"] = {150, 150, 150},
-    ["darkgray"] = {93, 93, 93},
-    ["blue"] = {0, 0, 255},
-    ["brown"] = {118, 85, 77},
-    ["lightbrown"] = {165, 113, 78},
-    ["verylightbrown"] = {171, 149, 132},
-    ["pale"] = {255, 204, 153},
-    ["green"] = {108, 187, 60},
-    ["lightgreen"] = {153, 198, 142},
-    ["orange"] = {255, 165, 0},
-    ["purple"] = {147, 112, 211},
-    ["red"] = {255, 0, 0},
-    ["lightyellow"] = {255, 243, 128},
-    ["yellow"] = {255, 255, 0}
+    ["🖤"] = {0, 0, 0},
+    ["💿"] = {192, 192, 192},
+    ["🌑"] = {128, 128, 128},
+    ["🤍"] = {255, 255, 255},
+    ["🍒"]=  {128, 0, 0},
+    ["❤️"] = {255, 0, 0},
+    ["💜"] = {128, 0, 128},
+    ["🌸"] = {255, 0, 255},
+    ["🌳"] = {0, 128, 0},
+    ["📗"] = {0, 255, 0},
+    ["🦖"] = {128, 128, 0},
+    ["🍋"] = {255, 255, 0},
+    ["🔵"] = {0, 0, 128},
+    ["📘"] = {0, 0, 255},
+    ["🧪"] = {0, 128, 128},
+    ["🐋"] = {0, 255, 255},
 }
 
 function getcolorforrange(r, g, b)
@@ -44,40 +44,7 @@ function getcolorforrange(r, g, b)
             closestcolour = i
         end
     end
-    
-    if closestcolour == "black" then
-        return "🖤"
-    elseif closestcolour == "white" then
-        return "🤍"
-    elseif closestcolour == "gray" then
-        return "💿"
-    elseif closestcolour == "darkgray" then
-        return "🌑"
-    elseif closestcolour == "blue" then
-        return "💙"
-    elseif closestcolour == "brown" then
-        return "🤎"
-    elseif closestcolour == "lightbrown" then
-        return "🧤"
-    elseif closestcolour == "verylightbrown" then
-        return "📜"
-    elseif closestcolour == "pale" then
-        return "🏻"
-    elseif closestcolour == "green" then
-        return "💚"
-    elseif closestcolour == "lightgreen" then
-        return "🌵"
-    elseif closestcolour == "orange" then
-        return "🧡"
-    elseif closestcolour == "purple" then
-        return "💜"
-    elseif closestcolour == "red" then
-        return "❤️"
-    elseif closestcolour == "yellow" then
-        return "💛"
-    elseif closestcolour == "lightyellow" then
-        return "📁"
-    end
+    return closestcolour
 end
 
 function Split(s, delimiter)
@@ -104,7 +71,7 @@ for fhnrteyrtnhi,line in pairs(splitteddata) do
                finalstring = finalstring .. chara .. "\n"
                currentd = 0
            end
-           currentd += 1
+           currentd = currentd + 1
        end
        coroutine.wrap(update)(finalstring)
        task.wait(.03)
