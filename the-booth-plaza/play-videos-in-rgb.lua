@@ -73,9 +73,9 @@ function getcolorforrange(r, g, b)
         return "💜"
     elseif closestcolour == "red" then
         return "❤️"
-    elseif closestcolour == "lightyellow" then
-        return "💛"
     elseif closestcolour == "yellow" then
+        return "💛"
+    elseif closestcolour == "lightyellow" then
         return "📁"
     end
 end
