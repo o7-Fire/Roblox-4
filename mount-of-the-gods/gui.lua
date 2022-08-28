@@ -1,18 +1,13 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local Window = Flux:Window("MOTG", "Press N to open/close", Color3.fromRGB(255, 110, 48), Enum.KeyCode.N)
-local character = game.Players.LocalPlayer.Character
-
+local lp = game.Players.LocalPlayer
 local RS = game:GetService("ReplicatedStorage")
 local Remotes = RS.Resources.Remotes
-local drinkremote = Remotes.DrinkFromWell
-local interactremote = Remotes.InteractItem
-local endseasonremote = Remotes.EndSeason
-local makefishremote = Remotes.MakeFish
 
 function drink()
     for i,v in pairs(game.Workspace.Buildings:GetChildren()) do
         if v.Name == "Well" then
-            drinkremote:FireServer(v)
+            Remotes.DrinkFromWell:FireServer(v)
         end
     end
 end
@@ -20,7 +15,7 @@ end
 function use(v, x)
     for i=1, x, 1 do
         spawn(function()
-            interactremote:FireServer("Use", v)
+            Remotes.InteractItem:FireServer("Use", v)
         end)
         task.wait(.01)
     end
@@ -30,8 +25,11 @@ local Tab1 = Window:Tab("Misc", "http://www.roblox.com/asset/?id=6023426915")
 Tab1:Button("Drink", "drinks from wells", function()
     drink()
 end)
+Tab1:Button("Revive Self", "revives yourself in case you die", function()
+    Remotes.Spawn:FireServer(lp)
+end)
 Tab1:Button("End Season", "ends current season", function()
-    endseasonremote:FireServer()
+    Remotes.EndSeason:FireServer()
 end)
 Tab1:Button('Destroy this GUI', "boom", function()
     game:GetService("CoreGui").FluxLib:Destroy()
@@ -47,7 +45,7 @@ Tab2:Textbox("Amount of Times", "Amount Here", true, function(output)
     amounttouse = tonumber(output)
 end)
 Tab2:Button("Use", "uses the item inf amount of times without it being destroyed", function()
-    use(character[touse], amounttouse)
+    use(lp.Character[touse], amounttouse)
 end)
 
 local fishtosummon = ""
@@ -56,5 +54,5 @@ Tab3:Textbox("Fish To Spawn", "Name Here", true, function(output)
     fishtosummon = tostring(output)
 end)
 Tab3:Button("Spawn", "spawns the fish, requires you to have fishing rod out", function()
-    makefishremote:FireServer(fishtosummon, character.HumanoidRootPart.Position)
+    Remotes.MakeFish:FireServer(fishtosummon, lp.Character.HumanoidRootPart.Position)
 end)
