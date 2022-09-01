@@ -1,3 +1,5 @@
+-- utilizes spawning and despawning to lag the server
+-- in terms of ping
 local toggleremote = game:GetService("Players").LocalPlayer.PlayerGui.MainGui.Events.SpawnToggle
 
 function toggle(bool)
