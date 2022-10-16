@@ -12,7 +12,11 @@ Tab1:Button("update current weapon held", "requires you to have your weapon out"
             weapon = v
         end
     end
-    local gundamage = require(weapon.Setting).BaseDamage
+    local s = require(weapon.Setting)
+    local gundamage = s.BaseDamage
+    if s.HeadshotEnabled then
+        gundamage = s.BaseDamage * s.HeadshotDamageMultiplier
+    end
     _G.tbdhstuff = {weapon, gundamage}
 end)
 Tab1:Button("kill all enemies", "press update current weapon held first", function()
@@ -42,7 +46,7 @@ Tab1:Button("kill all enemies", "press update current weapon held first", functi
                 [2] = 5,
                 [3] = 3
             },
-            [8] = x:FindFirstChild("Right Arm"):FindFirstChild("Right Arm")
+            [8] = x.Head.Head
         }
         
         r:InvokeServer(unpack(args))
