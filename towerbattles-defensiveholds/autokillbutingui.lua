@@ -1,6 +1,7 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local r = game:GetService("ReplicatedStorage").InflictTarget
 local Window = Flux:Window("the gui", "Press N to open/close", Color3.fromRGB(255, 110, 48), Enum.KeyCode.N)
+local threads = 3 -- luau support multithreading
 
 local Tab1 = Window:Tab("do stuff", "http://www.roblox.com/asset/?id=6023426915")
 Tab1:Label("Made by Nexity#3200")
@@ -56,9 +57,13 @@ Tab1:Button("kill all enemies", "press update current weapon held first", functi
         pcall(function()
             if v.Humanoid.Health > 0 then
                 local t = math.ceil(v.Humanoid.Health / gundamage)
-                for i=1, t+1, 1 do
-                    coroutine.wrap(damage)(v, gundamage)
-                    task.wait(.01)
+                for uselessvaluehere=1, threads, 1 do
+                    spawn(function()
+                        for i=1, math.ceil(t / threads), 1 do
+                            coroutine.wrap(damage)(v, gundamage)
+                            task.wait(.01)
+                        end
+                    end)
                 end
             end
         end)
