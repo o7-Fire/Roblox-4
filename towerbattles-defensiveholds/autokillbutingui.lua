@@ -53,9 +53,14 @@ Tab1:Button("kill all enemies", "press update current weapon held first", functi
     end
     
     for i,v in pairs(enemy) do
-        while v.Humanoid.Health > 0 do
-            coroutine.wrap(damage)(v, gundamage)
-            task.wait(.01)
-        end
+        pcall(function()
+            while v.Humanoid.Health > 0 do
+                coroutine.wrap(damage)(v, gundamage)
+                task.wait(.01)
+            end
+        end)
     end
+end)
+Tab1:Button("Destroy this GUI", "destroys the gui", function()
+    game.CoreGui.FluxLib:Destroy()
 end)
