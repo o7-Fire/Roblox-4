@@ -54,9 +54,12 @@ Tab1:Button("kill all enemies", "press update current weapon held first", functi
     
     for i,v in pairs(enemy) do
         pcall(function()
-            while v.Humanoid.Health > 0 do
-                coroutine.wrap(damage)(v, gundamage)
-                task.wait(.01)
+            if v.Humanoid.Health > 0 then
+                local t = math.ceil(v.Humanoid.Health / gundamage)
+                for i=1, t+1, 1 do
+                    coroutine.wrap(damage)(v, gundamage)
+                    task.wait(.01)
+                end
             end
         end)
     end
