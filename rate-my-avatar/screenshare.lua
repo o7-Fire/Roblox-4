@@ -47,23 +47,6 @@ local colours = {
     ["🐋"] = {0, 255, 255},
 }
 
-local Response = game:HttpGet("https://raw.githubusercontent.com/o7-Fire/Roblox-4/main/misc/words.txt")
-local Words = {}
-
-for line in string.gmatch(Response,"[^\r\n]*") do
-    if line ~= "" then
-        table.insert(Words, line)
-    end
-end
-
-function getrandomword()
-    local returnstring = ""
-    for i=1, 10, 1 do
-        returnstring = returnstring .. Words[math.random(1, #Words)] .. " "
-    end
-    return returnstring
-end
-
 function getcolorforrange(r, g, b)
     local closestint = 100000000000000000
     local closestcolour = ""
@@ -80,7 +63,6 @@ end
 
 local mx = 61
 local my = 30
-local therandomword = getrandomword()
 while _G.Enabled do
     local topost = ""
     for y=1, screensize.y, math.floor(screensize.y / my) do
@@ -122,6 +104,6 @@ while _G.Enabled do
         end
         topost = topost .. "\n"
     end
-    coroutine.wrap(update)(topost .. therandomword)
+    coroutine.wrap(update)(topost)
     task.wait(.03)
 end
