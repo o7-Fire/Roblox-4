@@ -5,11 +5,11 @@ import math
 import threading
 import time
 
-xs = 61
-ys = 30
+xs = 60
+ys = 33
 screensize = (windll.user32.GetSystemMetrics(0), windll.user32.GetSystemMetrics(1))
-dc= windll.user32.GetDC(0)
 app = Flask(__name__)
+
 colours = (
     (71, 206, 46, "💚"), (194, 219, 153, "🥬"), (176, 245, 255, "💧"),
     (240, 230, 140, "💡"), (157, 208, 74, "🍏"), (179, 29, 25, "🍓"),
@@ -19,7 +19,8 @@ colours = (
     (128, 128, 128, "🌑"),
     (255, 255, 255, "🤍"),
     (128, 0, 0, "🍒"),
-    (255, 0, 0, "❤️"),
+    (255, 0, 0, "❤"),
+    (255, 100, 100, "👛"),
     (128, 0, 128, "💜"),
     (255, 0, 255, "🌸"),
     (0, 128, 0, "🌳"),
@@ -42,12 +43,12 @@ def nearest_colour(query):
     lowestnum = 10000000000000000000
     for colour in colours:
         nint = ( ((query[0] - colour[0])**2) + ((query[1] - colour[1])**2) + ((query[2] - colour[2])**2) ) ** (1/2)
-        #print(nint)
         if nint < lowestnum:
             lowest = colour[3]
             lowestnum = nint
-    #print(lowest)
     return lowest
+
+
 
 temps = {}
 image = {}
@@ -64,20 +65,17 @@ def main():
             xc = 1
             for x in range(1, screensize[0], math.floor(screensize[0] / xs)):
                 p = getpixel(x,yy)
-                #print((x, yy), p)
                 temps[f"{str(xc)}A{str(yc)}"] = nearest_colour(p)
                 xc += 1
         t1 = threading.Thread(target=doa, args=(y, ycount))
         t1.start()
         ycount += 1
-    #time.sleep(.2)
     for y in range(ys):
         for x in range(xs):
             try:
                 finalmessage += temps[f"{str(x+1)}A{str(y+1)}"]
             except:
                 finalmessage += "📘"
-            #print(finalmessage)
         finalmessage += "\n"
     return finalmessage
 
