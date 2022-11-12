@@ -1,8 +1,7 @@
 how to use:\
-have python\
-pip3 install ctypes, PIL and flask\
+have python (recommend 3.10)\
+pip3 install Pillow, regex, Flask\
 run main.py first\
 then run main.lua\
 \
-hey you found this thing that will be released on 11/11 but not yet released\
-enjoy using it
+image_render.py is to find out what colors of emojis you picked, so you can make your own color palette / improve it
