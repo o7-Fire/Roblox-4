@@ -18,7 +18,6 @@ end
 
 while _G.Enabled do
     local r = game:HttpGet("http://192.168.0.166:8080")
-    print(r)
     coroutine.wrap(update)(r)
     task.wait(.03)
 end
