@@ -3,13 +3,12 @@ from io import BytesIO
 import base64
 import requests
 
-emojidata = requests.get('https://unicode.org/emoji/charts/full-emoji-list.html').text
+emojidata = requests.get('https://unicode.org/emoji/charts/full-emoji-list.html').text #courtesy of stackoverflow
 emojistodo = "💚🥬💧💡🍏🍓"
 
-def to_base64_png(emoji, version=0):
-    html_search_string = r"<img alt='{}' class='imga' src='data:image/png;base64,([^']+)'>" #'
+def to_base64_png(emoji, version=0): #courtesy of stackoverflow
+    html_search_string = r"<img alt='{}' class='imga' src='data:image/png;base64,([^']+)'>"
     matchlist = re.findall(html_search_string.format(emoji), emojidata)
-    #print(matchlist)
     return matchlist[version]
 
 finalstring = ""
