@@ -1,5 +1,6 @@
 # <center>Roblox-4 💥</center>
-
+[![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+\
 random projects for roblox
 
 ## Proof of Concept
@@ -81,5 +82,57 @@ random projects for roblox
 
 #### Z
 [zeppelin-wars/](/zeppelin-wars/)
+
+## End-User License Agreement
+```
+                          END-USER LICENSE AGREEMENT ("EULA")
+                          ===================================
+
+  IMPORTANT-READ CAREFULLY: Thank you for using code provided to you at https://github.com/o7-Fire/Roblox-4.
+  This End-User License Agreement ("EULA") is a legal agreement between you (either an individual or a single
+  entity) and o7 Fire(Creator, we, our or us). The "Content" mentioned, which includes any associated Content
+  components, any media, any printed materials other than the Content, and any "online" or electronic
+  documentation ("Content"). By installing, copying, or otherwise using the Content, you agree to be bound by
+  the terms of this EULA. If you do not agree to the terms of this EULA, do not install or use the Content.
+
+  1. Freeware
+
+  You may use the Content without charge. o7 Fire (Inc) will not monitor of your use (e.g., Name, IP Address 
+  and/or ID, Credit Card information, etc.). The Content contains Automatic Update feature to update the Content
+  to new version available over the Internet, without any charge. The constant updates apply to the future 
+  versions of the software will also be bound by this EULA. o7 Fire (Inc) is not responsible for any kind of
+  physical or mental damage done by the Content users.
+
+  2. Distribution of SOFTWARE.
+
+  You may not make copies of the Content; nor give exact copies of the original Content to anyone; and not 
+  distribute the Content in its unmodified form via electronic means. You may not charge any fees for the copy or
+  use of the Content itself. You must not represent in any way that you are selling the Content itself. Your
+  distribution of the Content will not entitle you to any compensation from o7 Fire (Inc). You may not make and
+  distribute use of the Content in any way shape or form unless given permission by the Distributor.
+
+  3. RESTRICTIONS
+  
+  3.1 You may not rent or lease the Content.
+
+  3.2 You may permanently transfer all of your rights under this EULA, provided the recipient agrees to the terms 
+  of this EULA. 
+  
+  3.3 Responsibilities is held on the Content users. Anything that Content users do, either for legal or illegal
+  purposes, except for Distribution of the Content and violating the EULA is held on the Content users and not 
+  on o7 Fire (Inc).
+
+  3.4 You may/not use the Content to perform any unauthorized transfer of information or for any illegal purpose.
+  
+  4. NO WARRANTIES
+
+o7 Fire (Inc) expressly disclaims any warranty for the Content. THE Content AND ANY RELATED DOCUMENTATION IS PROVIDED
+"AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES
+OR MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFINGEMENT. THE ENTIRE RISK ARISING OUT OF USE OR PERFORMANCE
+OF THE Content REMAINS WITH YOU.
+
+General Purpose EULA o7 Fire (Inc), 2022
+
+```
 
 
