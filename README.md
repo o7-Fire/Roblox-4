@@ -32,6 +32,7 @@ random projects for roblox
 ## Directory
 #### E
 [electricstate/](/electricstate/)
+\
 [entry-point-defense/](/entry-point-defense/)
 
 #### I
@@ -39,8 +40,11 @@ random projects for roblox
 
 #### M
 [mechanica/](/mechanica/)
+\
 [minesweeper/](/minesweeper/)
+\
 [misc/](/misc/)
+\
 [mount-of-the-gods/](/mount-of-the-gods/)
 
 #### N
@@ -48,14 +52,20 @@ random projects for roblox
 
 #### P 
 [plane-crazy/](/plane-crazy/)
+\
 [phantom-forces/](/phantom-forces/)
+\
 [project-lazarus/](/project-lazarus/)
 
 #### R
 [r2da/](/r2da/)
+\
 [raid-boss-destiny/](/raid-boss-destiny/)
+\
 [rail-frenzy/](/rail-frenzy/)
+\
 [rate-my-avatar/](/rate-my-avatar/)
+\
 [robloxplace/](/robloxplace/)
 
 #### S
@@ -63,6 +73,7 @@ random projects for roblox
 
 #### T
 [the-booth-plaza/](/the-booth-plaza/)
+\
 [towerbattles-defensiveholds/](/towerbattles-defensiveholds/)
 
 #### W
