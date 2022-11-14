@@ -1,5 +1,5 @@
 # <center>Roblox-4 💥</center>
-[![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/) ![Last commit](https://img.shields.io/github/last-commit/o7-Fire/Roblox-4) ![Contributor count](https://img.shields.io/github/contributors/o7-Fire/Roblox-4)
 \
 random projects for roblox
 
