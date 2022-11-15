@@ -1,4 +1,6 @@
-# <center>Roblox-4 💥</center>
+
+<h1 align="center">Roblox-4 💥</h2>
+
 [![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/nc-sa/4.0/) ![Last commit](https://img.shields.io/github/last-commit/o7-Fire/Roblox-4) ![Contributor count](https://img.shields.io/github/contributors/o7-Fire/Roblox-4)
 \
 random projects for roblox
@@ -28,7 +30,7 @@ random projects for roblox
 
 ## TODO
 
-- [ ] Better color palette
+- [ ] Better color palette ([rate-my-avatar/](/rate-my-avatar/))
 
 ## Directory
 #### E
