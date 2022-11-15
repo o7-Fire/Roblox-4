@@ -38,6 +38,9 @@ random projects for roblox
 \
 [entry-point-defense/](/entry-point-defense/)
 
+#### F
+[Feed-Your-Pets/](/Feed-Your-Pets/)
+
 #### I
 [If-prototype/](/If-prototype/)
 
@@ -73,6 +76,10 @@ random projects for roblox
 
 #### S
 [syrian-shenanigans/](/syrian-shenanigans/)
+\
+[Site-76/](/Site-76/)
+\
+[Stop-It-Slender/](/Stop-It-Slender/)
 
 #### T
 [the-booth-plaza/](/the-booth-plaza/)
