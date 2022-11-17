@@ -216,10 +216,12 @@ Virgin Islands, U.S.
 Yemen
 Zambia
 Zimbabwe]]
+local countrieslist = {}
+for country in countries:gmatch("[^\r\n]+") do
+    table.insert(countrieslist, country)
+end
 
 while _G.Enabled do
-    for country in countries:gmatch("[^\r\n]+") do
-        coroutine.wrap(update)("i hate " .. country)
-        task.wait(.03)
-    end
+    coroutine.wrap(update)("i hate " .. countrieslist[math.random(1, #countrieslist)])
+    task.wait(3)
 end
