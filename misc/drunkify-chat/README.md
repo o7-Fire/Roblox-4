@@ -13,5 +13,5 @@ it do be slow though if your internet is slow, like a couple seconds delay
 * 3: then run main.lua in your executor, can work with free ones and paid ones
 * 4: talk in chat and it will work
 
-you can change how many times it translates in main.lua at line 21 `"&interval=3"`
+you can change how many times it translates in main.lua at line 21 `"&interval=3"`\
 if you run into issues feel free to dm me Nexity#3200 though i wont be hand holding you on how to use it
