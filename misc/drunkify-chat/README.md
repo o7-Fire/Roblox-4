@@ -1,7 +1,7 @@
 # what it does
 
-translates your incoming text a few times (or more) to make it drunk\
-it is the same as putting a plagiarised essay into google translate multiple times and getting a brand new different essay
+it is the same as putting a plagiarised essay into google translate multiple times and getting a brand new different essay\
+it do be slow though if your internet is slow, like a couple seconds delay
 
 # how to use
 
