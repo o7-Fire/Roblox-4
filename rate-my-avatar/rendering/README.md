@@ -10,7 +10,7 @@ Y - move down\
 Z - rotate to the right\
 X - rotate to the left\
 C - pitch down\
-V - pitch up\
+V - pitch up
 
 # How to make your own wireframes list
 
