@@ -1,4 +1,3 @@
-local vehicle
 local nodes = {}
 local plr = game.Players.LocalPlayer
 local hrp = plr.Character.HumanoidRootPart
@@ -28,16 +27,6 @@ local function zeroGrav(part)
         local temp = Instance.new("BodyForce")
         temp.Force = part:GetMass() * Vector3.new(0,workspace.Gravity,0)
         temp.Parent = part
-    end
-end
-
-for _, v in pairs(game.Workspace:GetChildren()) do
-    if v:FindFirstChild("Seat") then
-        if v.Seat:FindFirstChild("Seat") then
-            if v.Seat.Seat.Occupant == plr.Character.Humanoid then
-                vehicle = v
-            end
-        end
     end
 end
 
