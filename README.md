@@ -2,7 +2,7 @@
 <h1 align="center">Roblox-4 💥</h2>
 
 
-![](https://github.com/o7-Fire/Roblox-4/assets/89518595/ef1a3171-dfc3-47b3-9751-28a6486eda65)
+https://github.com/o7-Fire/Roblox-4/assets/89518595/ef1a3171-dfc3-47b3-9751-28a6486eda65
 
 
 [![License: CC BY-NC 4.0](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png)](https://creativecommons.org/licenses/nc-sa/4.0/) ![Last commit](https://img.shields.io/github/last-commit/o7-Fire/Roblox-4) ![Contributor count](https://img.shields.io/github/contributors/o7-Fire/Roblox-4)
