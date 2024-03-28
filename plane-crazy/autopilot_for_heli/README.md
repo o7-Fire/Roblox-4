@@ -7,6 +7,3 @@ if you want it to follow someone, type the person name (can be shortname) and th
 then it starts following\
 \
 for orbit, you click once, it orbits clockwise, you click twice, it orbits counter clockwise, click it 3rd time and it stops
-
-# Showcase video
-https://youtu.be/CiAiyobyD0A
