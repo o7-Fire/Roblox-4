@@ -17,7 +17,7 @@ local DoCheck = RandomVariable(20)
 _G.DoCheck = DoCheck
 
 for i, part in pairs(game.Workspace[game.Players.LocalPlayer.Name..'Aircraft']:GetChildren()) do
-    if part.ClassName == "Model" then
+    if part.ClassName == "Model" and part.Name == "BlockStd" then
 	    table.insert(parts, part.PrimaryPart) -- put the parts into the table
     end
 end
