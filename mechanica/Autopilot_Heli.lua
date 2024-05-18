@@ -66,7 +66,7 @@ task.spawn(function()
 end)
 
 local Tab1 = Window:Tab("main", "http://www.roblox.com/asset/?id=6023426915")
-Tab1:Label("Nexity#3200 / Unit#3694")
+Tab1:Label("discord: .nexity. , nexitysecond")
 Tab1:Button("init", "be in seat for it to work", function()
     followmouse = mouse.Hit
     for _, v in pairs(game.Workspace.Creations.MyModel:GetDescendants()) do
