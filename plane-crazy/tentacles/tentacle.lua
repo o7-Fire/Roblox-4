@@ -81,7 +81,7 @@ p.CFrame = hrp.CFrame
 p.Size = Vector3.new(2.5, 2.5, 2.5)
 p.Transparency = 1
 table.insert(parts, p)
-for i, part in pairs(game.Workspace[game.Players.LocalPlayer.Name..'Aircraft']:GetChildren()) do
+for i, part in pairs(game.Workspace[game.Players.LocalPlayer.Name..' Aircraft']:GetChildren()) do
     if part.ClassName == "Model" and part.Name ~= "PilotSeat" then
 	    table.insert(parts, part.PrimaryPart) -- put the parts into the table
 	    part.PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0.4, 0.1, 1, 1, 1)
